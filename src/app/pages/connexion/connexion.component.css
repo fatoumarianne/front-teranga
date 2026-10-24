@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.boite {
+  max-width: 420px;
+  margin: 2rem auto;
+}
+
+.sous-titre {
+  color: var(--teranga-gris);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background-color: var(--teranga-bleu);
+  border-color: var(--teranga-bleu);
+}
+
+.lien-inscription {
+  font-size: 0.9rem;
+  color: var(--teranga-gris);
+}

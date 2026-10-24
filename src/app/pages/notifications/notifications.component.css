@@ -1,0 +1,57 @@
+:host {
+  display: block;
+}
+
+.entete-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.liste {
+  background: #fff;
+  border: 1px solid #e3e8ef;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ligne {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.15rem;
+  border-bottom: 1px solid #f0f3f7;
+  cursor: pointer;
+}
+
+.ligne:last-child {
+  border-bottom: none;
+}
+
+.ligne:hover {
+  background: #f8fafc;
+}
+
+.ligne.non-lue {
+  background: #f3f7fc;
+}
+
+.message {
+  margin: 0;
+  color: #35495e;
+}
+
+.date {
+  color: var(--teranga-gris);
+  font-size: 0.8rem;
+}
+
+.point {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--teranga-bleu-clair);
+  flex-shrink: 0;
+}

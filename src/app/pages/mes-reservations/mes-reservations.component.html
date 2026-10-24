@@ -1,0 +1,38 @@
+<h1 class="page-titre">Mes réservations</h1>
+
+<div class="barre-filtres">
+  <button class="btn btn-sm" [class.actif]="filtre() === 'toutes'"
+          (click)="changerFiltre('toutes')">
+    Toutes ({{ compteur().toutes }})
+  </button>
+  <button class="btn btn-sm" [class.actif]="filtre() === 'en_attente'"
+          (click)="changerFiltre('en_attente')">
+    En attente ({{ compteur().en_attente }})
+  </button>
+  <button class="btn btn-sm" [class.actif]="filtre() === 'validee'"
+          (click)="changerFiltre('validee')">
+    Validées ({{ compteur().validee }})
+  </button>
+</div>
+
+@if (message()) {
+  <div class="alert alert-success py-2">{{ message() }}</div>
+}
+@if (erreur()) {
+  <div class="alert alert-danger py-2">{{ erreur() }}</div>
+}
+
+@if (chargement()) {
+  <p class="message-vide">Chargement de vos réservations…</p>
+} @else {
+  @for (r of visibles(); track r.id) {
+    <app-reservation-carte [reservation]="r" (annule)="annuler($event)" />
+  } @empty {
+    <div class="carte message-vide">
+      <p class="mb-2">Aucune réservation à afficher.</p>
+      <a class="btn btn-primary btn-sm" routerLink="/reserver">
+        Faire une demande
+      </a>
+    </div>
+  }
+}

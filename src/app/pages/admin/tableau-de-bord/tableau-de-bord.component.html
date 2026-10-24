@@ -1,0 +1,77 @@
+<h1 class="page-titre">Tableau de bord</h1>
+
+@if (erreur()) {
+  <div class="alert alert-danger py-2">{{ erreur() }}</div>
+}
+
+@if (chargement()) {
+  <p class="message-vide">Chargement des statistiques…</p>
+}
+
+@if (stats(); as s) {
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-lg-3">
+      <div class="compteur">
+        <span class="valeur">{{ s.compteurs.en_attente }}</span>
+        <span class="libelle">Demandes en attente</span>
+        <a class="lien" routerLink="/admin/demandes">Traiter →</a>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="compteur">
+        <span class="valeur">{{ s.compteurs.validees }}</span>
+        <span class="libelle">Réservations validées</span>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="compteur">
+        <span class="valeur">{{ s.compteurs.membres }}</span>
+        <span class="libelle">Membres inscrits</span>
+        <a class="lien" routerLink="/admin/membres">Gérer →</a>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="compteur">
+        <span class="valeur">{{ s.compteurs.ressources }}</span>
+        <span class="libelle">
+          Ressources
+          <small>({{ s.compteurs.salles }} salles, {{ s.compteurs.equipements }} équipements)</small>
+        </span>
+        <a class="lien" routerLink="/admin/ressources">Gérer →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-lg-7">
+      <div class="carte">
+        <h2 class="titre-graph">Réservations par ressource</h2>
+        <div class="cadre-graph"><canvas #graphRessources></canvas></div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="carte">
+        <h2 class="titre-graph">Évolution mensuelle</h2>
+        <div class="cadre-graph"><canvas #graphMois></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="carte mt-3">
+    <h2 class="titre-graph">Répartition par statut</h2>
+    <ul class="repartition">
+      @for (ligne of statuts(); track ligne.cle) {
+        <li>
+          <span class="badge badge-{{ ligne.cle }}">{{ libelleStatut(ligne.cle) }}</span>
+          <strong>{{ ligne.valeur }}</strong>
+        </li>
+      } @empty {
+        <li class="message-vide">Aucune réservation enregistrée.</li>
+      }
+    </ul>
+    <small class="periode">
+      Période analysée : du {{ s.periode.debut }} au {{ s.periode.fin }}
+    </small>
+  </div>
+}

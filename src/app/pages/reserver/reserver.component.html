@@ -1,0 +1,71 @@
+<h1 class="page-titre">Faire une demande de réservation</h1>
+
+<div class="boite">
+  <div class="carte">
+    <form (submit)="$event.preventDefault(); envoyer()">
+
+      <div class="mb-3">
+        <label class="form-label" for="ressource">Salle ou équipement</label>
+        <select id="ressource" class="form-select" (change)="choisirRessource(valeur($event))" required>
+          <option value="">— Choisir une ressource —</option>
+          @for (r of ressources(); track r.id) {
+            <option [value]="r.id">{{ r.nom }} ({{ r.type }})</option>
+          }
+        </select>
+
+        @if (ressourceChoisie(); as r) {
+          <div class="apercu">
+            @if (r.description) {
+              <p class="mb-1">{{ r.description }}</p>
+            }
+            @switch (r.type) {
+              @case ('salle') {
+                <small>Capacité : {{ r.capacite ?? '—' }} personnes</small>
+              }
+              @case ('equipement') {
+                <small>Quantité disponible : {{ r.quantite ?? '—' }} · État : {{ r.etat ?? '—' }}</small>
+              }
+            }
+          </div>
+        }
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label" for="debut">Début du créneau</label>
+          <input id="debut" type="datetime-local" class="form-control"
+                 [value]="dateDebut()" (input)="dateDebut.set(valeur($event))" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label" for="fin">Fin du créneau</label>
+          <input id="fin" type="datetime-local" class="form-control"
+                 [value]="dateFin()" (input)="dateFin.set(valeur($event))" required>
+          @if (finAvantDebut()) {
+            <small class="message-erreur">La fin doit être postérieure au début.</small>
+          }
+        </div>
+      </div>
+
+      @if (erreur()) {
+        <div class="alert alert-danger py-2">{{ erreur() }}</div>
+      }
+      @if (succes()) {
+        <div class="alert alert-success py-2">{{ succes() }}</div>
+      }
+
+      <button type="submit" class="btn btn-primary"
+              [disabled]="enCours() || !formulaireValide()">
+        @if (enCours()) {
+          Envoi en cours…
+        } @else {
+          Envoyer la demande
+        }
+      </button>
+
+      <p class="note">
+        Votre demande sera enregistrée en attente de validation par
+        l'administrateur du club.
+      </p>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+/* Styles globaux de l'application — Club Sportif Teranga */
+
+:root {
+  --teranga-bleu: #1f4e79;
+  --teranga-bleu-clair: #4472c4;
+  --teranga-vert: #198754;
+  --teranga-orange: #ffc107;
+  --teranga-rouge: #dc3545;
+  --teranga-gris: #6c757d;
+}
+
+body {
+  background-color: #f6f8fb;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.page-titre {
+  color: var(--teranga-bleu);
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.carte {
+  background: #fff;
+  border: 1px solid #e3e8ef;
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+}
+
+/* pastilles de statut, reprises des couleurs du calendrier */
+.badge-en_attente { background-color: var(--teranga-orange); color: #4a3700; }
+.badge-validee    { background-color: var(--teranga-vert); color: #fff; }
+.badge-refusee    { background-color: var(--teranga-rouge); color: #fff; }
+.badge-annulee    { background-color: var(--teranga-gris); color: #fff; }
+
+.message-erreur {
+  color: var(--teranga-rouge);
+  font-size: 0.9rem;
+}
+
+.message-vide {
+  color: var(--teranga-gris);
+  text-align: center;
+  padding: 2rem 1rem;
+}

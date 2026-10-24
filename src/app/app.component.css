@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.pied {
+  background-color: #eef2f7;
+  border-top: 1px solid #e3e8ef;
+  color: var(--teranga-gris);
+  font-size: 0.85rem;
+  padding: 1rem 0;
+  text-align: center;
+}

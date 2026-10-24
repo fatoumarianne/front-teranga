@@ -1,0 +1,71 @@
+<div class="boite">
+  <div class="carte">
+    <h1 class="page-titre text-center">Créer un compte</h1>
+    <p class="sous-titre">Rejoignez l'espace de réservation du club</p>
+
+    <form (submit)="$event.preventDefault(); sInscrire()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label" for="prenom">Prénom</label>
+          <input id="prenom" type="text" class="form-control"
+                 [value]="prenom()" (input)="prenom.set(valeur($event))" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label" for="nom">Nom</label>
+          <input id="nom" type="text" class="form-control"
+                 [value]="nom()" (input)="nom.set(valeur($event))" required>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="email">Adresse e-mail</label>
+        <input id="email" type="email" class="form-control" autocomplete="email"
+               [value]="email()" (input)="email.set(valeur($event))" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="tel">
+          Téléphone <span class="facultatif">(facultatif)</span>
+        </label>
+        <input id="tel" type="tel" class="form-control" placeholder="77 123 45 67"
+               [value]="telephone()" (input)="telephone.set(valeur($event))">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="mdp">Mot de passe</label>
+        <input id="mdp" type="password" class="form-control" autocomplete="new-password"
+               [value]="motDePasse()" (input)="motDePasse.set(valeur($event))" required>
+        @if (motDePasseTropCourt()) {
+          <small class="message-erreur">Le mot de passe doit contenir au moins 8 caractères.</small>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="conf">Confirmer le mot de passe</label>
+        <input id="conf" type="password" class="form-control" autocomplete="new-password"
+               [value]="confirmation()" (input)="confirmation.set(valeur($event))" required>
+        @if (confirmationDifferente()) {
+          <small class="message-erreur">Les deux mots de passe ne correspondent pas.</small>
+        }
+      </div>
+
+      @if (erreur()) {
+        <div class="alert alert-danger py-2">{{ erreur() }}</div>
+      }
+
+      <button type="submit" class="btn btn-primary w-100"
+              [disabled]="enCours() || !formulaireValide()">
+        @if (enCours()) {
+          Création en cours…
+        } @else {
+          Créer mon compte
+        }
+      </button>
+    </form>
+
+    <p class="text-center mt-3 mb-0 lien-connexion">
+      Déjà inscrit ?
+      <a routerLink="/connexion">Se connecter</a>
+    </p>
+  </div>
+</div>

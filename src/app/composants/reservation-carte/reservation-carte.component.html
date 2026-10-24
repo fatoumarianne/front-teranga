@@ -1,0 +1,29 @@
+@let r = reservation();
+
+<div class="carte-resa">
+  <div class="entete">
+    <div>
+      <h3 class="nom">{{ r.ressource?.nom ?? 'Ressource' }}</h3>
+      @if (afficherMembre() && r.membre) {
+        <p class="membre">Demandé par {{ r.membre.nom_complet }}</p>
+      }
+    </div>
+    <span class="badge badge-{{ r.statut }}">{{ libelleStatut(r.statut) }}</span>
+  </div>
+
+  <p class="creneau">{{ creneau(r.date_debut, r.date_fin) }}</p>
+
+  @if (r.motif) {
+    <p class="motif">Motif : {{ r.motif }}</p>
+  }
+
+  <div class="pied">
+    <small class="demande">Demande du {{ dateHeure(r.date_demande) }}</small>
+
+    @if (r.annulable) {
+      <button class="btn btn-sm btn-outline-danger" (click)="demanderAnnulation()">
+        Annuler
+      </button>
+    }
+  </div>
+</div>

@@ -1,0 +1,29 @@
+:host {
+  display: block;
+}
+
+.boite {
+  max-width: 680px;
+}
+
+.apercu {
+  background: #f3f7fc;
+  border-left: 3px solid var(--teranga-bleu-clair);
+  border-radius: 4px;
+  padding: 0.6rem 0.8rem;
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: #35495e;
+}
+
+.btn-primary {
+  background-color: var(--teranga-bleu);
+  border-color: var(--teranga-bleu);
+}
+
+.note {
+  color: var(--teranga-gris);
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}

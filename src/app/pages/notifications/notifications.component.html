@@ -1,0 +1,30 @@
+<div class="entete-page">
+  <h1 class="page-titre mb-0">Notifications</h1>
+  <button class="btn btn-sm btn-outline-secondary" (click)="toutMarquerLues()">
+    Tout marquer comme lu
+  </button>
+</div>
+
+@if (erreur()) {
+  <div class="alert alert-danger py-2">{{ erreur() }}</div>
+}
+
+@if (chargement()) {
+  <p class="message-vide">Chargement…</p>
+} @else {
+  <div class="liste">
+    @for (n of notifications(); track n.id) {
+      <div class="ligne" [class.non-lue]="!n.lu" (click)="marquerLue(n)">
+        <div class="contenu">
+          <p class="message">{{ n.message }}</p>
+          <small class="date">{{ dateHeure(n.date_envoi) }}</small>
+        </div>
+        @if (!n.lu) {
+          <span class="point" aria-label="Non lue"></span>
+        }
+      </div>
+    } @empty {
+      <div class="carte message-vide">Aucune notification pour le moment.</div>
+    }
+  </div>
+}

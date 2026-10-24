@@ -1,0 +1,83 @@
+:host {
+  display: block;
+}
+
+.compteur {
+  background: #fff;
+  border: 1px solid #e3e8ef;
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.valeur {
+  color: var(--teranga-bleu);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.libelle {
+  color: var(--teranga-gris);
+  font-size: 0.88rem;
+  margin-top: 0.2rem;
+}
+
+.libelle small {
+  display: block;
+  font-size: 0.78rem;
+}
+
+.lien {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--teranga-bleu-clair);
+  text-decoration: none;
+}
+
+.lien:hover {
+  text-decoration: underline;
+}
+
+.titre-graph {
+  color: var(--teranga-bleu);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.repartition {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.repartition li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.periode {
+  display: block;
+  margin-top: 1rem;
+  color: var(--teranga-gris);
+  font-size: 0.8rem;
+}
+
+/* Chart.js dimensionne le canvas d'apres son conteneur : on lui donne
+   une hauteur fixe pour que les deux graphiques soient alignes. */
+.cadre-graph {
+  position: relative;
+  height: 280px;
+}
+
+.cadre-graph canvas {
+  max-height: 280px;
+}

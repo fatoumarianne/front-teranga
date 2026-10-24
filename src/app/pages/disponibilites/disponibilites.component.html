@@ -1,0 +1,33 @@
+<h1 class="page-titre">Disponibilités des salles et équipements</h1>
+
+<div class="carte mb-3">
+  <div class="row align-items-end g-3">
+    <div class="col-md-6">
+      <label class="form-label" for="filtre">Filtrer par ressource</label>
+      <select id="filtre" class="form-select" (change)="filtrer(valeur($event))">
+        <option value="">Toutes les ressources</option>
+        @for (r of ressources(); track r.id) {
+          <option [value]="r.id">{{ r.nom }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <div class="legende">
+        <span class="puce validee"></span> Validée
+        <span class="puce attente"></span> En attente
+      </div>
+    </div>
+  </div>
+</div>
+
+@if (erreur()) {
+  <div class="alert alert-danger">{{ erreur() }}</div>
+}
+
+<div class="carte position-relative">
+  @if (chargement()) {
+    <div class="voile">Chargement des créneaux…</div>
+  }
+  <div #calendrier></div>
+</div>

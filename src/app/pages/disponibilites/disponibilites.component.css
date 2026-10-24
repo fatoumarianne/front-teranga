@@ -1,0 +1,39 @@
+:host {
+  display: block;
+}
+
+.legende {
+  color: var(--teranga-gris);
+  font-size: 0.9rem;
+  padding-bottom: 0.5rem;
+}
+
+.puce {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+
+.puce.validee {
+  background-color: var(--teranga-vert);
+}
+
+.puce.attente {
+  background-color: var(--teranga-orange);
+}
+
+.voile {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--teranga-gris);
+  border-radius: 10px;
+  z-index: 5;
+}

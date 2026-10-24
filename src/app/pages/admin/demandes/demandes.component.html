@@ -1,0 +1,71 @@
+<h1 class="page-titre">Demandes de réservation</h1>
+
+<div class="barre-filtres">
+  <button class="btn btn-sm" [class.actif]="filtre() === 'en_attente'"
+          (click)="changerFiltre('en_attente')">
+    En attente ({{ nbEnAttente() }})
+  </button>
+  <button class="btn btn-sm" [class.actif]="filtre() === 'validee'"
+          (click)="changerFiltre('validee')">Validées</button>
+  <button class="btn btn-sm" [class.actif]="filtre() === 'refusee'"
+          (click)="changerFiltre('refusee')">Refusées</button>
+  <button class="btn btn-sm" [class.actif]="filtre() === 'toutes'"
+          (click)="changerFiltre('toutes')">Toutes</button>
+</div>
+
+@if (message()) {
+  <div class="alert alert-success py-2">{{ message() }}</div>
+}
+@if (erreur()) {
+  <div class="alert alert-danger py-2">{{ erreur() }}</div>
+}
+
+@if (chargement()) {
+  <p class="message-vide">Chargement des demandes…</p>
+} @else {
+  @for (r of visibles(); track r.id) {
+    <div class="demande">
+      <div class="entete">
+        <div>
+          <h3 class="nom">{{ r.ressource?.nom ?? 'Ressource' }}</h3>
+          <p class="membre">{{ r.membre?.nom_complet ?? 'Membre' }}</p>
+        </div>
+        <span class="badge badge-{{ r.statut }}">{{ libelleStatut(r.statut) }}</span>
+      </div>
+
+      <p class="creneau">{{ creneau(r.date_debut, r.date_fin) }}</p>
+      <small class="demande-le">Demande reçue le {{ dateHeure(r.date_demande) }}</small>
+
+      @if (r.motif) {
+        <p class="motif">Motif : {{ r.motif }}</p>
+      }
+
+      @if (r.statut === 'en_attente') {
+        @if (refusEnCours() === r.id) {
+          <div class="zone-refus">
+            <label class="form-label" [attr.for]="'motif-' + r.id">
+              Motif du refus (transmis au membre)
+            </label>
+            <textarea [id]="'motif-' + r.id" class="form-control" rows="2"
+                      [value]="motif()" (input)="motif.set(valeur($event))"
+                      placeholder="Ex : salle indisponible pour maintenance"></textarea>
+            <div class="actions mt-2">
+              <button class="btn btn-sm btn-danger"
+                      [disabled]="motif().trim() === ''"
+                      (click)="confirmerRefus()">Confirmer le refus</button>
+              <button class="btn btn-sm btn-outline-secondary"
+                      (click)="annulerRefus()">Annuler</button>
+            </div>
+          </div>
+        } @else {
+          <div class="actions">
+            <button class="btn btn-sm btn-success" (click)="valider(r.id)">Valider</button>
+            <button class="btn btn-sm btn-outline-danger" (click)="ouvrirRefus(r.id)">Refuser</button>
+          </div>
+        }
+      }
+    </div>
+  } @empty {
+    <div class="carte message-vide">Aucune demande dans cette catégorie.</div>
+  }
+}

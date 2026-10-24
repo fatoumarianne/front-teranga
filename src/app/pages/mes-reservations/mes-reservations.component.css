@@ -1,0 +1,27 @@
+:host {
+  display: block;
+}
+
+.barre-filtres {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.barre-filtres .btn {
+  background: #fff;
+  border: 1px solid #d9e0ea;
+  color: #35495e;
+}
+
+.barre-filtres .btn.actif {
+  background-color: var(--teranga-bleu);
+  border-color: var(--teranga-bleu);
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: var(--teranga-bleu);
+  border-color: var(--teranga-bleu);
+}

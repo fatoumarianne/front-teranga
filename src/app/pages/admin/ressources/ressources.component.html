@@ -1,0 +1,134 @@
+<div class="entete-page">
+  <h1 class="page-titre mb-0">Salles et équipements</h1>
+  <button class="btn btn-primary btn-sm" (click)="ouvrirCreation()">
+    + Ajouter une ressource
+  </button>
+</div>
+
+@if (message()) {
+  <div class="alert alert-success py-2">{{ message() }}</div>
+}
+@if (erreur()) {
+  <div class="alert alert-danger py-2">{{ erreur() }}</div>
+}
+
+@if (edition() !== null) {
+  <div class="carte mb-4">
+    <h2 class="titre-form">
+      @if (edition() === 0) { Nouvelle ressource } @else { Modifier la ressource }
+    </h2>
+
+    <form (submit)="$event.preventDefault(); enregistrer()">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label class="form-label" for="type">Type</label>
+          <select id="type" class="form-select" [value]="fType()"
+                  (change)="fType.set($any(valeur($event)))">
+            <option value="salle">Salle</option>
+            <option value="equipement">Équipement</option>
+          </select>
+        </div>
+
+        <div class="col-md-8 mb-3">
+          <label class="form-label" for="nom">Nom</label>
+          <input id="nom" type="text" class="form-control"
+                 [value]="fNom()" (input)="fNom.set(valeur($event))" required>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="desc">Description</label>
+        <textarea id="desc" class="form-control" rows="2"
+                  [value]="fDescription()" (input)="fDescription.set(valeur($event))"></textarea>
+      </div>
+
+      @switch (fType()) {
+        @case ('salle') {
+          <div class="mb-3 col-md-4">
+            <label class="form-label" for="cap">Capacité (personnes)</label>
+            <input id="cap" type="number" min="1" class="form-control"
+                   [value]="fCapacite()" (input)="fCapacite.set(valeur($event))">
+          </div>
+        }
+        @case ('equipement') {
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label class="form-label" for="qte">Quantité</label>
+              <input id="qte" type="number" min="0" class="form-control"
+                     [value]="fQuantite()" (input)="fQuantite.set(valeur($event))">
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="form-label" for="etat">État</label>
+              <input id="etat" type="text" class="form-control" placeholder="bon, moyen…"
+                     [value]="fEtat()" (input)="fEtat.set(valeur($event))">
+            </div>
+          </div>
+        }
+      }
+
+      <div class="form-check mb-3">
+        <input id="dispo" type="checkbox" class="form-check-input"
+               [checked]="fDisponible()"
+               (change)="fDisponible.set(!fDisponible())">
+        <label class="form-check-label" for="dispo">
+          Disponible à la réservation
+        </label>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary btn-sm"
+                [disabled]="!formulaireValide()">Enregistrer</button>
+        <button type="button" class="btn btn-outline-secondary btn-sm"
+                (click)="fermer()">Annuler</button>
+      </div>
+    </form>
+  </div>
+}
+
+@if (chargement()) {
+  <p class="message-vide">Chargement…</p>
+} @else {
+  <h2 class="sous-titre">Salles</h2>
+  <div class="grille mb-4">
+    @for (r of salles(); track r.id) {
+      <div class="ressource">
+        <div class="haut">
+          <h3 class="nom">{{ r.nom }}</h3>
+          @if (!r.disponible) {
+            <span class="badge bg-secondary">Indisponible</span>
+          }
+        </div>
+        @if (r.description) { <p class="desc">{{ r.description }}</p> }
+        <p class="detail">Capacité : {{ r.capacite ?? '—' }} personnes</p>
+        <div class="actions">
+          <button class="btn btn-sm btn-outline-primary" (click)="ouvrirModification(r)">Modifier</button>
+          <button class="btn btn-sm btn-outline-danger" (click)="supprimer(r)">Supprimer</button>
+        </div>
+      </div>
+    } @empty {
+      <p class="message-vide">Aucune salle enregistrée.</p>
+    }
+  </div>
+
+  <h2 class="sous-titre">Équipements</h2>
+  <div class="grille">
+    @for (r of equipements(); track r.id) {
+      <div class="ressource">
+        <div class="haut">
+          <h3 class="nom">{{ r.nom }}</h3>
+          @if (!r.disponible) {
+            <span class="badge bg-secondary">Indisponible</span>
+          }
+        </div>
+        @if (r.description) { <p class="desc">{{ r.description }}</p> }
+        <p class="detail">Quantité : {{ r.quantite ?? '—' }} · État : {{ r.etat ?? '—' }}</p>
+        <div class="actions">
+          <button class="btn btn-sm btn-outline-primary" (click)="ouvrirModification(r)">Modifier</button>
+          <button class="btn btn-sm btn-outline-danger" (click)="supprimer(r)">Supprimer</button>
+        </div>
+      </div>
+    } @empty {
+      <p class="message-vide">Aucun équipement enregistré.</p>
+    }
+  </div>
+}

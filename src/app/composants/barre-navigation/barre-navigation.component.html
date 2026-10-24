@@ -1,0 +1,90 @@
+<nav class="navbar navbar-expand-lg barre">
+  <div class="container">
+    <a class="navbar-brand marque" routerLink="/">
+      Club Sportif Teranga
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#menu" aria-controls="menu"
+            aria-expanded="false" aria-label="Ouvrir le menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      @if (auth.estConnecte()) {
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/disponibilites" routerLinkActive="actif">
+              Disponibilités
+            </a>
+          </li>
+
+          @if (auth.estMembre()) {
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/reserver" routerLinkActive="actif">
+                Réserver
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/mes-reservations" routerLinkActive="actif">
+                Mes réservations
+              </a>
+            </li>
+          }
+
+          @if (auth.estAdministrateur()) {
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/admin/tableau-de-bord" routerLinkActive="actif">
+                Tableau de bord
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/admin/demandes" routerLinkActive="actif">
+                Demandes
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/admin/ressources" routerLinkActive="actif">
+                Ressources
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/admin/membres" routerLinkActive="actif">
+                Membres
+              </a>
+            </li>
+          }
+        </ul>
+
+        <ul class="navbar-nav align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link position-relative" routerLink="/notifications"
+               routerLinkActive="actif">
+              Notifications
+              @if (nonLues() > 0) {
+                <span class="badge rounded-pill bg-danger pastille">{{ nonLues() }}</span>
+              }
+            </a>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link identite">{{ auth.utilisateur()?.nom_complet }}</span>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-sm btn-outline-light" (click)="deconnexion()">
+              Déconnexion
+            </button>
+          </li>
+        </ul>
+      } @else {
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/connexion" routerLinkActive="actif">Connexion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/inscription" routerLinkActive="actif">Inscription</a>
+          </li>
+        </ul>
+      }
+    </div>
+  </div>
+</nav>
