@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500"
+     width="800" height="500" role="img">
+  <defs>
+    <linearGradient id="fond" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3E7FB5"/>
+      <stop offset="1" stop-color="#1F4E79"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#fond)"/>
+<g transform="translate(300 250) rotate(-22)">
+    <rect x="-13" y="60" width="26" height="150" rx="13" fill="#2C3A4A"/>
+    <rect x="-13" y="150" width="26" height="60" rx="13" fill="#2C3A4A"/>
+    <ellipse cx="0" cy="-20" rx="92" ry="112" fill="#FFFFFF" opacity="0.1"/>
+    <ellipse cx="0" cy="-20" rx="92" ry="112" fill="none"
+             stroke="#C9821F" stroke-width="16"/>
+    <g stroke="#FFFFFF" stroke-width="2.5" opacity="0.75">
+      <line x1="-72" y1="-118" x2="-72" y2="78"/>
+      <line x1="-54" y1="-118" x2="-54" y2="78"/>
+      <line x1="-36" y1="-118" x2="-36" y2="78"/>
+      <line x1="-18" y1="-118" x2="-18" y2="78"/>
+      <line x1="0" y1="-118" x2="0" y2="78"/>
+      <line x1="18" y1="-118" x2="18" y2="78"/>
+      <line x1="36" y1="-118" x2="36" y2="78"/>
+      <line x1="54" y1="-118" x2="54" y2="78"/>
+      <line x1="72" y1="-118" x2="72" y2="78"/>
+      <line x1="-88" y1="-112" x2="88" y2="-112"/>
+      <line x1="-88" y1="-94" x2="88" y2="-94"/>
+      <line x1="-88" y1="-76" x2="88" y2="-76"/>
+      <line x1="-88" y1="-58" x2="88" y2="-58"/>
+      <line x1="-88" y1="-40" x2="88" y2="-40"/>
+      <line x1="-88" y1="-22" x2="88" y2="-22"/>
+      <line x1="-88" y1="-4" x2="88" y2="-4"/>
+      <line x1="-88" y1="14" x2="88" y2="14"/>
+      <line x1="-88" y1="32" x2="88" y2="32"/>
+      <line x1="-88" y1="50" x2="88" y2="50"/>
+      <line x1="-88" y1="68" x2="88" y2="68"/>
+    </g>
+  </g><g transform="translate(510 250) rotate(22)">
+    <rect x="-13" y="60" width="26" height="150" rx="13" fill="#2C3A4A"/>
+    <rect x="-13" y="150" width="26" height="60" rx="13" fill="#2C3A4A"/>
+    <ellipse cx="0" cy="-20" rx="92" ry="112" fill="#FFFFFF" opacity="0.1"/>
+    <ellipse cx="0" cy="-20" rx="92" ry="112" fill="none"
+             stroke="#D7E64B" stroke-width="16"/>
+    <g stroke="#FFFFFF" stroke-width="2.5" opacity="0.75">
+      <line x1="-72" y1="-118" x2="-72" y2="78"/>
+      <line x1="-54" y1="-118" x2="-54" y2="78"/>
+      <line x1="-36" y1="-118" x2="-36" y2="78"/>
+      <line x1="-18" y1="-118" x2="-18" y2="78"/>
+      <line x1="0" y1="-118" x2="0" y2="78"/>
+      <line x1="18" y1="-118" x2="18" y2="78"/>
+      <line x1="36" y1="-118" x2="36" y2="78"/>
+      <line x1="54" y1="-118" x2="54" y2="78"/>
+      <line x1="72" y1="-118" x2="72" y2="78"/>
+      <line x1="-88" y1="-112" x2="88" y2="-112"/>
+      <line x1="-88" y1="-94" x2="88" y2="-94"/>
+      <line x1="-88" y1="-76" x2="88" y2="-76"/>
+      <line x1="-88" y1="-58" x2="88" y2="-58"/>
+      <line x1="-88" y1="-40" x2="88" y2="-40"/>
+      <line x1="-88" y1="-22" x2="88" y2="-22"/>
+      <line x1="-88" y1="-4" x2="88" y2="-4"/>
+      <line x1="-88" y1="14" x2="88" y2="14"/>
+      <line x1="-88" y1="32" x2="88" y2="32"/>
+      <line x1="-88" y1="50" x2="88" y2="50"/>
+      <line x1="-88" y1="68" x2="88" y2="68"/>
+    </g>
+  </g>
+  <circle cx="404" cy="400" r="42" fill="#D7E64B"/>
+  <path d="M 368 382 Q 404 400 368 418" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+  <path d="M 440 382 Q 404 400 440 418" fill="none" stroke="#FFFFFF" stroke-width="4"/></svg>

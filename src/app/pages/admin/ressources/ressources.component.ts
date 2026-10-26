@@ -1,6 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core'
 
 import { messageErreur, valeur } from '../../../core/formulaire'
+import { illustrationRessource } from '../../../core/illustration'
 import { Ressource, TypeRessource } from '../../../core/modeles'
 import { RessourceService } from '../../../core/services/ressource.service'
 
@@ -15,6 +16,8 @@ export class RessourcesComponent {
 
   valeur = valeur
 
+  illustration = illustrationRessource
+
   ressources = signal<Ressource[]>([])
   chargement = signal(true)
   erreur = signal('')
@@ -26,6 +29,7 @@ export class RessourcesComponent {
   fType = signal<TypeRessource>('salle')
   fNom = signal('')
   fDescription = signal('')
+  fImage = signal('')
   fDisponible = signal(true)
   fCapacite = signal('')
   fQuantite = signal('')
@@ -45,6 +49,7 @@ export class RessourcesComponent {
     this.fType.set('salle')
     this.fNom.set('')
     this.fDescription.set('')
+    this.fImage.set('')
     this.fDisponible.set(true)
     this.fCapacite.set('')
     this.fQuantite.set('')
@@ -56,6 +61,7 @@ export class RessourcesComponent {
     this.fType.set(r.type)
     this.fNom.set(r.nom)
     this.fDescription.set(r.description ?? '')
+    this.fImage.set(r.image ?? '')
     this.fDisponible.set(r.disponible)
     this.fCapacite.set(r.capacite != null ? String(r.capacite) : '')
     this.fQuantite.set(r.quantite != null ? String(r.quantite) : '')
@@ -75,6 +81,7 @@ export class RessourcesComponent {
       type: this.fType(),
       nom: this.fNom().trim(),
       description: this.fDescription().trim() || null,
+      image: this.fImage().trim() || null,
       disponible: this.fDisponible(),
       capacite: this.fType() === 'salle' && this.fCapacite() ? Number(this.fCapacite()) : null,
       quantite: this.fType() === 'equipement' && this.fQuantite() ? Number(this.fQuantite()) : null,

@@ -10,6 +10,13 @@ import { gardeAdministrateur, gardeConnecte } from './core/gardes/gardes'
  * allege le premier chargement.
  */
 export const routes: Routes = [
+  // page d'accueil publique : visible sans etre connecte
+  {
+    path: '',
+    pathMatch: 'full',
+    loadComponent: () =>
+      import('./pages/accueil/accueil.component').then(m => m.AccueilComponent),
+  },
   {
     path: 'connexion',
     loadComponent: () =>
@@ -84,6 +91,5 @@ export const routes: Routes = [
     ],
   },
 
-  { path: '', redirectTo: 'disponibilites', pathMatch: 'full' },
-  { path: '**', redirectTo: 'disponibilites' },
+  { path: '**', redirectTo: '' },
 ]

@@ -42,6 +42,20 @@
                   [value]="fDescription()" (input)="fDescription.set(valeur($event))"></textarea>
       </div>
 
+      <div class="mb-3">
+        <label class="form-label" for="img">Photo</label>
+        <input id="img" type="text" class="form-control"
+               placeholder="adresse d'une photo, ou nom d'une illustration fournie"
+               [value]="fImage()" (input)="fImage.set(valeur($event))">
+        <small class="aide">
+          Collez l'adresse web d'une photo, ou laissez vide pour utiliser
+          l'illustration par défaut. Illustrations fournies :
+          salle-basket.svg, salle-futsal.svg, court-tennis.svg,
+          salle-musculation.svg, ballons-basket.svg, raquettes-tennis.svg,
+          filet-volley.svg, tapis-sol.svg
+        </small>
+      </div>
+
       @switch (fType()) {
         @case ('salle') {
           <div class="mb-3 col-md-4">
@@ -92,6 +106,7 @@
   <div class="grille mb-4">
     @for (r of salles(); track r.id) {
       <div class="ressource">
+        <img class="apercu" [src]="illustration(r)" [alt]="r.nom">
         <div class="haut">
           <h3 class="nom">{{ r.nom }}</h3>
           @if (!r.disponible) {
@@ -114,6 +129,7 @@
   <div class="grille">
     @for (r of equipements(); track r.id) {
       <div class="ressource">
+        <img class="apercu" [src]="illustration(r)" [alt]="r.nom">
         <div class="haut">
           <h3 class="nom">{{ r.nom }}</h3>
           @if (!r.disponible) {

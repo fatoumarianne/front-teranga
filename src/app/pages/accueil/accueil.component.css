@@ -1,0 +1,317 @@
+:host {
+  display: block;
+}
+
+/* --------------------------------------------------------------- banniere */
+
+.banniere {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  background: linear-gradient(135deg, #1f4e79 0%, #2f6ba6 60%, #4472c4 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.banniere-texte {
+  flex: 1 1 380px;
+}
+
+.surtitre {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  opacity: 0.75;
+  margin-bottom: 0.6rem;
+}
+
+.banniere h1 {
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.accroche {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  opacity: 0.92;
+  margin-bottom: 1.75rem;
+  max-width: 34rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.btn-clair {
+  background-color: #fff;
+  color: var(--teranga-bleu);
+  font-weight: 600;
+  border: 2px solid #fff;
+}
+
+.btn-clair:hover {
+  background-color: #eaf1f9;
+  color: var(--teranga-bleu);
+}
+
+.btn-contour {
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+.btn-contour:hover {
+  color: var(--teranga-bleu);
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.banniere-chiffres {
+  display: flex;
+  flex: 0 1 300px;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.chiffre {
+  flex: 1 1 86px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  padding: 1rem 0.75rem;
+  text-align: center;
+}
+
+.chiffre .valeur {
+  display: block;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.chiffre .libelle {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.85;
+  margin-top: 0.25rem;
+}
+
+/* ----------------------------------------------------------------- blocs */
+
+.bloc {
+  margin-bottom: 3rem;
+}
+
+.bloc-titre {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--teranga-bleu);
+  margin-bottom: 0.4rem;
+}
+
+.bloc-intro {
+  color: var(--teranga-gris);
+  margin-bottom: 1.25rem;
+  max-width: 44rem;
+}
+
+.bloc-titre + .row,
+.bloc-titre + .attente {
+  margin-top: 1.25rem;
+}
+
+.attente {
+  color: var(--teranga-gris);
+}
+
+/* --------------------------------------------------------------- etapes */
+
+.etape {
+  height: 100%;
+  position: relative;
+  padding-top: 2.25rem;
+}
+
+.etape .numero {
+  position: absolute;
+  top: -0.9rem;
+  left: 1.25rem;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  background-color: var(--teranga-bleu);
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.etape h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--teranga-bleu);
+  margin-bottom: 0.5rem;
+}
+
+.etape p {
+  color: var(--teranga-gris);
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------- vignettes */
+
+.vignette {
+  height: 100%;
+  background-color: #fff;
+  border: 1px solid #e3e8ef;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.vignette:hover {
+  box-shadow: 0 6px 18px rgba(31, 78, 121, 0.14);
+  transform: translateY(-2px);
+}
+
+.vignette img {
+  width: 100%;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  display: block;
+  background-color: #eef2f7;
+}
+
+.vignette-corps {
+  padding: 1rem;
+  flex: 1;
+}
+
+.vignette h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--teranga-bleu);
+  margin: 0.5rem 0 0.4rem;
+}
+
+.vignette p {
+  font-size: 0.9rem;
+  color: var(--teranga-gris);
+  margin-bottom: 0.3rem;
+}
+
+.vignette .detail {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #35495e;
+  margin-bottom: 0;
+}
+
+.etiquette {
+  display: inline-block;
+  padding: 0.12rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.etiquette.salle {
+  background-color: var(--teranga-bleu);
+}
+
+.etiquette.equipement {
+  background-color: #2e7d52;
+}
+
+/* ------------------------------------------------------------- cotisations */
+
+.tarif {
+  height: 100%;
+  text-align: center;
+}
+
+.tarif h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--teranga-bleu);
+  margin-bottom: 0.75rem;
+}
+
+.tarif .montant {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #35495e;
+  margin-bottom: 0.4rem;
+}
+
+.tarif .montant span {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--teranga-gris);
+}
+
+.tarif .condition {
+  color: var(--teranga-gris);
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+.tarif.vedette {
+  border: 2px solid var(--teranga-bleu-clair);
+}
+
+/* ------------------------------------------------------------ appel final */
+
+.appel {
+  background-color: #eef3f9;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.appel h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--teranga-bleu);
+  margin-bottom: 0.5rem;
+}
+
+.appel p {
+  color: var(--teranga-gris);
+  margin-bottom: 1.5rem;
+}
+
+.appel .btn-clair {
+  background-color: var(--teranga-bleu);
+  border-color: var(--teranga-bleu);
+  color: #fff;
+}
+
+.appel .btn-clair:hover {
+  background-color: #17405f;
+  border-color: #17405f;
+  color: #fff;
+}
+
+@media (max-width: 575px) {
+  .banniere {
+    padding: 2rem 1.25rem;
+  }
+}

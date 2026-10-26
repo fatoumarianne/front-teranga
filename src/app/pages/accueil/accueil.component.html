@@ -1,0 +1,180 @@
+<!-- ------------------------------------------------------------ banniere -->
+<section class="banniere">
+  <div class="banniere-texte">
+    <p class="surtitre">Keur Massar · Depuis 2023</p>
+    <h1>Bienvenue au Club Sportif Teranga</h1>
+    <p class="accroche">
+      Réservez en quelques clics les salles et les équipements du club.
+      Consultez les créneaux libres, envoyez votre demande, et suivez sa
+      validation depuis votre espace personnel.
+    </p>
+
+    @if (auth.estConnecte()) {
+      <a class="btn btn-clair btn-lg" routerLink="/disponibilites">
+        Accéder à mon espace
+      </a>
+    } @else {
+      <div class="actions">
+        <a class="btn btn-clair btn-lg" routerLink="/inscription">Créer un compte</a>
+        <a class="btn btn-contour btn-lg" routerLink="/connexion">Se connecter</a>
+      </div>
+    }
+  </div>
+
+  <div class="banniere-chiffres">
+    <div class="chiffre">
+      <span class="valeur">{{ salles().length }}</span>
+      <span class="libelle">salles</span>
+    </div>
+    <div class="chiffre">
+      <span class="valeur">{{ equipements().length }}</span>
+      <span class="libelle">équipements</span>
+    </div>
+    <div class="chiffre">
+      <span class="valeur">7j/7</span>
+      <span class="libelle">réservation en ligne</span>
+    </div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------ comment ça marche -->
+<section class="bloc">
+  <h2 class="bloc-titre">Comment ça marche</h2>
+
+  <div class="row g-3 etapes">
+    <div class="col-md-4">
+      <div class="carte etape">
+        <span class="numero">1</span>
+        <h3>Consultez les disponibilités</h3>
+        <p>
+          Le calendrier affiche les créneaux déjà occupés, salle par salle et
+          équipement par équipement.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="carte etape">
+        <span class="numero">2</span>
+        <h3>Envoyez votre demande</h3>
+        <p>
+          Choisissez la ressource, la date et l'horaire. L'application vérifie
+          aussitôt qu'aucune autre réservation n'occupe le créneau.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="carte etape">
+        <span class="numero">3</span>
+        <h3>Recevez la réponse</h3>
+        <p>
+          L'administrateur valide ou refuse la demande. Vous êtes notifié, et
+          vous pouvez annuler tant que le créneau n'a pas commencé.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------------------------------------------------- les ressources -->
+<section class="bloc">
+  <h2 class="bloc-titre">Les salles du club</h2>
+
+  @if (chargement()) {
+    <p class="attente">Chargement des ressources…</p>
+  } @else if (erreur()) {
+    <div class="alert alert-warning py-2">{{ erreur() }}</div>
+  } @else {
+    <div class="row g-3">
+      @for (r of salles(); track r.id) {
+        <div class="col-sm-6 col-lg-3">
+          <article class="vignette">
+            <img [src]="illustration(r)" [alt]="r.nom">
+            <div class="vignette-corps">
+              <span class="etiquette salle">Salle</span>
+              <h3>{{ r.nom }}</h3>
+              @if (r.description) {
+                <p>{{ r.description }}</p>
+              }
+              @if (r.capacite) {
+                <p class="detail">Capacité : {{ r.capacite }} personnes</p>
+              }
+            </div>
+          </article>
+        </div>
+      } @empty {
+        <p class="attente">Aucune salle n'est disponible pour le moment.</p>
+      }
+    </div>
+
+    <h2 class="bloc-titre mt-5">Les équipements</h2>
+
+    <div class="row g-3">
+      @for (r of equipements(); track r.id) {
+        <div class="col-sm-6 col-lg-3">
+          <article class="vignette">
+            <img [src]="illustration(r)" [alt]="r.nom">
+            <div class="vignette-corps">
+              <span class="etiquette equipement">Équipement</span>
+              <h3>{{ r.nom }}</h3>
+              @if (r.description) {
+                <p>{{ r.description }}</p>
+              }
+              @if (r.quantite) {
+                <p class="detail">Disponible en {{ r.quantite }} exemplaires</p>
+              }
+            </div>
+          </article>
+        </div>
+      } @empty {
+        <p class="attente">Aucun équipement n'est disponible pour le moment.</p>
+      }
+    </div>
+  }
+</section>
+
+<!-- ----------------------------------------------------------- cotisations -->
+<!--
+  Montants donnés à titre indicatif : ils décrivent les catégories
+  d'adhésion du club et ne sont pas gérés par l'application. Pour les
+  modifier, il suffit de changer les valeurs ci-dessous.
+-->
+<section class="bloc">
+  <h2 class="bloc-titre">Les cotisations</h2>
+  <p class="bloc-intro">
+    L'adhésion au club donne accès à la réservation des salles et des
+    équipements. Le règlement se fait auprès du secrétariat.
+  </p>
+
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="carte tarif">
+        <h3>Jeunes</h3>
+        <p class="montant">5 000 <span>FCFA / mois</span></p>
+        <p class="condition">Moins de 18 ans</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="carte tarif vedette">
+        <h3>Adultes</h3>
+        <p class="montant">10 000 <span>FCFA / mois</span></p>
+        <p class="condition">Accès à toutes les salles</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="carte tarif">
+        <h3>Annuelle</h3>
+        <p class="montant">100 000 <span>FCFA / an</span></p>
+        <p class="condition">Deux mois offerts</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------------ appel final -->
+@if (!auth.estConnecte()) {
+  <section class="appel">
+    <h2>Prêt à réserver ?</h2>
+    <p>Créez votre compte membre en une minute et accédez au calendrier du club.</p>
+    <a class="btn btn-clair btn-lg" routerLink="/inscription">Créer mon compte</a>
+  </section>
+}

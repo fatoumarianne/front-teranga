@@ -24,6 +24,16 @@ export class RessourceService {
       .pipe(map(r => r.data))
   }
 
+  /**
+   * Liste publique affichee sur la page d'accueil.
+   * Cet appel ne necessite pas d'etre connecte.
+   */
+  publiques() {
+    return this.http
+      .get<Collection<Ressource>>(`${API_URL}/ressources-publiques`)
+      .pipe(map(r => r.data))
+  }
+
   detail(id: number) {
     return this.http
       .get<{ data: Ressource }>(`${API_URL}/ressources/${id}`)

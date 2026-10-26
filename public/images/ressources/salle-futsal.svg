@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500"
+     width="800" height="500" role="img">
+  <defs>
+    <linearGradient id="fond" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E8B5F"/>
+      <stop offset="1" stop-color="#198754"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#fond)"/>
+
+  <path d="M 0 500 L 0 290 L 800 290 L 800 500 Z" fill="#13613F"/>
+  <path d="M 130 290 L 670 290 L 800 500 L 0 500 Z" fill="#2F8A5B"/>
+  <path d="M 130 290 L 670 290 L 800 500 L 0 500 Z"
+        fill="none" stroke="#FFFFFF" stroke-width="4" opacity="0.8"/>
+  <line x1="400" y1="290" x2="400" y2="500" stroke="#FFFFFF"
+        stroke-width="4" opacity="0.6"/>
+  <ellipse cx="400" cy="392" rx="86" ry="38" fill="none"
+           stroke="#FFFFFF" stroke-width="4" opacity="0.8"/>
+  <rect x="268" y="142" width="264" height="150" rx="4" fill="none"
+        stroke="#FFFFFF" stroke-width="9"/>
+  <g stroke="#FFFFFF" stroke-width="2" opacity="0.55">
+    <line x1="284" y1="146" x2="284" y2="288"/>
+    <line x1="306" y1="146" x2="306" y2="288"/>
+    <line x1="328" y1="146" x2="328" y2="288"/>
+    <line x1="350" y1="146" x2="350" y2="288"/>
+    <line x1="372" y1="146" x2="372" y2="288"/>
+    <line x1="394" y1="146" x2="394" y2="288"/>
+    <line x1="416" y1="146" x2="416" y2="288"/>
+    <line x1="438" y1="146" x2="438" y2="288"/>
+    <line x1="460" y1="146" x2="460" y2="288"/>
+    <line x1="482" y1="146" x2="482" y2="288"/>
+    <line x1="504" y1="146" x2="504" y2="288"/>
+    <line x1="526" y1="146" x2="526" y2="288"/>
+    <line x1="272" y1="162" x2="528" y2="162"/>
+    <line x1="272" y1="184" x2="528" y2="184"/>
+    <line x1="272" y1="206" x2="528" y2="206"/>
+    <line x1="272" y1="228" x2="528" y2="228"/>
+    <line x1="272" y1="250" x2="528" y2="250"/>
+    <line x1="272" y1="272" x2="528" y2="272"/>
+  </g>
+  <circle cx="574" cy="372" r="44" fill="#FFFFFF"/>
+  <circle cx="574" cy="372" r="44" fill="none" stroke="#CBD5E0" stroke-width="3"/>
+  <polygon points="574,344 598,362 589,390 559,390 550,362" fill="#1F4E79"/>
+  <polygon points="546,340 560,334 566,348 556,358 544,352" fill="#1F4E79" opacity="0.8"/>
+  <polygon points="602,340 614,352 604,362 592,352 596,340" fill="#1F4E79" opacity="0.8"/></svg>

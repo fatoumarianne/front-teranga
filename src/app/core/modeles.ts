@@ -28,6 +28,7 @@ export interface Ressource {
   type: TypeRessource
   nom: string
   description: string | null
+  image: string | null
   disponible: boolean
   capacite?: number | null
   quantite?: number | null

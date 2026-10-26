@@ -76,3 +76,20 @@
   margin-top: auto;
   padding-top: 0.85rem;
 }
+
+.apercu {
+  width: calc(100% + 2rem);
+  margin: -1rem -1rem 0.75rem;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px 10px 0 0;
+  background-color: #eef2f7;
+}
+
+.aide {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--teranga-gris);
+}
