@@ -67,7 +67,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <span class="nav-link identite">{{ auth.utilisateur()?.nom_complet }}</span>
+            <a class="nav-link identite" routerLink="/profil" routerLinkActive="actif"
+               title="Mon profil">
+              {{ auth.utilisateur()?.nom_complet }}
+            </a>
           </li>
           <li class="nav-item">
             <button class="btn btn-sm btn-outline-light" (click)="deconnexion()">

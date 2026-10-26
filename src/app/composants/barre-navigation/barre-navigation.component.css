@@ -29,6 +29,14 @@
   font-size: 0.9rem;
 }
 
+/* le nom de l'utilisateur est un lien vers son profil */
+.identite:hover,
+.identite:focus,
+.identite.actif {
+  color: #fff;
+  text-decoration: underline;
+}
+
 .pastille {
   font-size: 0.65rem;
   position: absolute;

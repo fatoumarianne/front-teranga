@@ -47,6 +47,12 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/notifications/notifications.component').then(m => m.NotificationsComponent),
   },
+  {
+    path: 'profil',
+    canActivate: [gardeConnecte],
+    loadComponent: () =>
+      import('./pages/profil/profil.component').then(m => m.ProfilComponent),
+  },
 
   // ---------------------------------------------- administrateur
 

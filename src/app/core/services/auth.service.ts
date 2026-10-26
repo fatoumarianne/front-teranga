@@ -49,6 +49,33 @@ export class AuthService {
       .pipe(tap(reponse => this.ouvrirSession(reponse)))
   }
 
+  /** Profil de l'utilisateur connecte, recharge depuis le serveur. */
+  profil() {
+    return this.http
+      .get<{ data: Utilisateur }>(`${API_URL}/profil`)
+      .pipe(tap(reponse => this.memoriserUtilisateur(reponse.data)))
+  }
+
+  /**
+   * Mise a jour du profil.
+   *
+   * Le serveur renvoie l'utilisateur a jour : on le replace dans le signal
+   * pour que la barre de navigation affiche aussitot le nouveau nom.
+   */
+  majProfil(donnees: {
+    nom?: string
+    prenom?: string
+    email?: string
+    telephone?: string | null
+    mot_de_passe_actuel?: string
+    mot_de_passe?: string
+    mot_de_passe_confirmation?: string
+  }) {
+    return this.http
+      .put<{ message: string; utilisateur: Utilisateur }>(`${API_URL}/profil`, donnees)
+      .pipe(tap(reponse => this.memoriserUtilisateur(reponse.utilisateur)))
+  }
+
   deconnexion() {
     // on previent le serveur pour qu'il revoque le jeton, mais on ferme la
     // session localement dans tous les cas, meme si la requete echoue
@@ -62,8 +89,12 @@ export class AuthService {
 
   private ouvrirSession(reponse: ReponseAuth) {
     localStorage.setItem(CLE_JETON, reponse.token)
-    localStorage.setItem(CLE_UTILISATEUR, JSON.stringify(reponse.utilisateur))
-    this.utilisateur.set(reponse.utilisateur)
+    this.memoriserUtilisateur(reponse.utilisateur)
+  }
+
+  private memoriserUtilisateur(utilisateur: Utilisateur) {
+    localStorage.setItem(CLE_UTILISATEUR, JSON.stringify(utilisateur))
+    this.utilisateur.set(utilisateur)
   }
 
   private fermerSession() {

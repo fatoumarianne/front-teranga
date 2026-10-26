@@ -1,0 +1,70 @@
+:host {
+  display: block;
+}
+
+.bloc-titre {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--teranga-bleu);
+  margin-bottom: 1.25rem;
+}
+
+.aide,
+.facultatif {
+  color: var(--teranga-gris);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.aide {
+  display: block;
+  margin-top: 0.3rem;
+}
+
+.btn-primary {
+  background-color: var(--teranga-bleu);
+  border-color: var(--teranga-bleu);
+}
+
+.recap dt {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--teranga-gris);
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.recap dt:first-child {
+  margin-top: 0;
+}
+
+.recap dd {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+.etiquette {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+}
+
+.etiquette.admin {
+  background-color: var(--teranga-bleu);
+}
+
+.etiquette.membre {
+  background-color: #4472c4;
+}
+
+.etiquette.actif {
+  background-color: #198754;
+}
+
+.etiquette.inactif {
+  background-color: #6c757d;
+}

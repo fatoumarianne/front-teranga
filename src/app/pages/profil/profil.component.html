@@ -1,0 +1,149 @@
+<h1 class="page-titre">Mon profil</h1>
+
+@if (utilisateur(); as u) {
+  <div class="row g-4">
+
+    <!-- ------------------------------------------- informations -->
+    <div class="col-lg-7">
+      <div class="carte">
+        <h2 class="bloc-titre">Informations personnelles</h2>
+
+        <form (submit)="$event.preventDefault(); enregistrerInfos()">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label" for="prenom">Prénom</label>
+              <input id="prenom" type="text" class="form-control"
+                     [value]="prenom()" (input)="prenom.set(valeur($event))" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label" for="nom">Nom</label>
+              <input id="nom" type="text" class="form-control"
+                     [value]="nom()" (input)="nom.set(valeur($event))" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="email">Adresse e-mail</label>
+            <input id="email" type="email" class="form-control" autocomplete="email"
+                   [value]="email()" (input)="email.set(valeur($event))" required>
+            <small class="aide">Elle vous sert aussi d'identifiant de connexion.</small>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="tel">
+              Téléphone <span class="facultatif">(facultatif)</span>
+            </label>
+            <input id="tel" type="tel" class="form-control" placeholder="77 123 45 67"
+                   [value]="telephone()" (input)="telephone.set(valeur($event))">
+          </div>
+
+          @if (erreurInfos()) {
+            <div class="alert alert-danger py-2">{{ erreurInfos() }}</div>
+          }
+          @if (succesInfos()) {
+            <div class="alert alert-success py-2">{{ succesInfos() }}</div>
+          }
+
+          <button type="submit" class="btn btn-primary"
+                  [disabled]="enregistrementEnCours() || !infosValides()">
+            @if (enregistrementEnCours()) {
+              Enregistrement…
+            } @else {
+              Enregistrer
+            }
+          </button>
+        </form>
+      </div>
+
+      <!-- ------------------------------------------- mot de passe -->
+      <div class="carte mt-4">
+        <h2 class="bloc-titre">Changer mon mot de passe</h2>
+
+        <form (submit)="$event.preventDefault(); changerMotDePasse()">
+          <div class="mb-3">
+            <label class="form-label" for="actuel">Mot de passe actuel</label>
+            <input id="actuel" type="password" class="form-control"
+                   autocomplete="current-password"
+                   [value]="motDePasseActuel()"
+                   (input)="motDePasseActuel.set(valeur($event))" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="nouveau">Nouveau mot de passe</label>
+            <input id="nouveau" type="password" class="form-control"
+                   autocomplete="new-password"
+                   [value]="nouveauMotDePasse()"
+                   (input)="nouveauMotDePasse.set(valeur($event))" required>
+            @if (motDePasseTropCourt()) {
+              <small class="message-erreur">
+                Le mot de passe doit contenir au moins 8 caractères.
+              </small>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="conf">Confirmer le nouveau mot de passe</label>
+            <input id="conf" type="password" class="form-control"
+                   autocomplete="new-password"
+                   [value]="confirmation()" (input)="confirmation.set(valeur($event))" required>
+            @if (confirmationDifferente()) {
+              <small class="message-erreur">
+                Les deux mots de passe ne correspondent pas.
+              </small>
+            }
+          </div>
+
+          @if (erreurMotDePasse()) {
+            <div class="alert alert-danger py-2">{{ erreurMotDePasse() }}</div>
+          }
+          @if (succesMotDePasse()) {
+            <div class="alert alert-success py-2">{{ succesMotDePasse() }}</div>
+          }
+
+          <button type="submit" class="btn btn-primary"
+                  [disabled]="changementEnCours() || !motDePasseValide()">
+            @if (changementEnCours()) {
+              Modification…
+            } @else {
+              Modifier le mot de passe
+            }
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------- recapitulatif -->
+    <div class="col-lg-5">
+      <div class="carte recap">
+        <h2 class="bloc-titre">Mon compte</h2>
+
+        <dl class="mb-0">
+          <dt>Nom complet</dt>
+          <dd>{{ u.nom_complet }}</dd>
+
+          <dt>Rôle</dt>
+          <dd>
+            @if (u.role === 'administrateur') {
+              <span class="etiquette admin">Administrateur</span>
+            } @else {
+              <span class="etiquette membre">Membre</span>
+            }
+          </dd>
+
+          <dt>Statut du compte</dt>
+          <dd>
+            @if (u.statut === 'actif') {
+              <span class="etiquette actif">Actif</span>
+            } @else {
+              <span class="etiquette inactif">Inactif</span>
+            }
+          </dd>
+
+          <dt>Membre depuis</dt>
+          <dd>{{ dateSeule(u.date_inscription) }}</dd>
+        </dl>
+      </div>
+    </div>
+
+  </div>
+}
