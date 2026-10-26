@@ -1,38 +1,38 @@
 <nav class="navbar navbar-expand-lg barre">
   <div class="container">
-    <a class="navbar-brand marque" routerLink="/">
+    <a class="navbar-brand marque" routerLink="/" (click)="fermerMenu()">
       Club Sportif Teranga
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#menu" aria-controls="menu"
-            aria-expanded="false" aria-label="Ouvrir le menu">
+    <button class="navbar-toggler" type="button" aria-controls="menu"
+            [attr.aria-expanded]="menuOuvert()"
+            aria-label="Ouvrir le menu" (click)="basculerMenu()">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="menu">
+    <div class="navbar-collapse" id="menu" [class.ouvert]="menuOuvert()">
       @if (auth.estConnecte()) {
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
             <a class="nav-link" routerLink="/" routerLinkActive="actif"
-               [routerLinkActiveOptions]="{ exact: true }">
+               [routerLinkActiveOptions]="{ exact: true }" (click)="fermerMenu()">
               Accueil
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/disponibilites" routerLinkActive="actif">
+            <a class="nav-link" routerLink="/disponibilites" routerLinkActive="actif" (click)="fermerMenu()">
               Disponibilités
             </a>
           </li>
 
           @if (auth.estMembre()) {
             <li class="nav-item">
-              <a class="nav-link" routerLink="/reserver" routerLinkActive="actif">
+              <a class="nav-link" routerLink="/reserver" routerLinkActive="actif" (click)="fermerMenu()">
                 Réserver
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/mes-reservations" routerLinkActive="actif">
+              <a class="nav-link" routerLink="/mes-reservations" routerLinkActive="actif" (click)="fermerMenu()">
                 Mes réservations
               </a>
             </li>
@@ -40,22 +40,22 @@
 
           @if (auth.estAdministrateur()) {
             <li class="nav-item">
-              <a class="nav-link" routerLink="/admin/tableau-de-bord" routerLinkActive="actif">
+              <a class="nav-link" routerLink="/admin/tableau-de-bord" routerLinkActive="actif" (click)="fermerMenu()">
                 Tableau de bord
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/admin/demandes" routerLinkActive="actif">
+              <a class="nav-link" routerLink="/admin/demandes" routerLinkActive="actif" (click)="fermerMenu()">
                 Demandes
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/admin/ressources" routerLinkActive="actif">
+              <a class="nav-link" routerLink="/admin/ressources" routerLinkActive="actif" (click)="fermerMenu()">
                 Ressources
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/admin/membres" routerLinkActive="actif">
+              <a class="nav-link" routerLink="/admin/membres" routerLinkActive="actif" (click)="fermerMenu()">
                 Membres
               </a>
             </li>
@@ -65,7 +65,7 @@
         <ul class="navbar-nav align-items-lg-center">
           <li class="nav-item">
             <a class="nav-link position-relative" routerLink="/notifications"
-               routerLinkActive="actif">
+               routerLinkActive="actif" (click)="fermerMenu()">
               Notifications
               @if (nonLues() > 0) {
                 <span class="badge rounded-pill bg-danger pastille">{{ nonLues() }}</span>
@@ -74,12 +74,12 @@
           </li>
           <li class="nav-item">
             <a class="nav-link identite" routerLink="/profil" routerLinkActive="actif"
-               title="Mon profil">
+               title="Mon profil" (click)="fermerMenu()">
               {{ auth.utilisateur()?.nom_complet }}
             </a>
           </li>
           <li class="nav-item">
-            <button class="btn btn-sm btn-outline-light" (click)="deconnexion()">
+            <button class="btn btn-sm btn-outline-light" (click)="fermerMenu(); deconnexion()">
               Déconnexion
             </button>
           </li>
@@ -88,13 +88,13 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link" routerLink="/" routerLinkActive="actif"
-               [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
+               [routerLinkActiveOptions]="{ exact: true }" (click)="fermerMenu()">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/connexion" routerLinkActive="actif">Connexion</a>
+            <a class="nav-link" routerLink="/connexion" routerLinkActive="actif" (click)="fermerMenu()">Connexion</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/inscription" routerLinkActive="actif">Inscription</a>
+            <a class="nav-link" routerLink="/inscription" routerLinkActive="actif" (click)="fermerMenu()">Inscription</a>
           </li>
         </ul>
       }

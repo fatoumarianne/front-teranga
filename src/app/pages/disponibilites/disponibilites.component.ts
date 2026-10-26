@@ -37,16 +37,19 @@ export class DisponibilitesComponent implements AfterViewInit, OnDestroy {
   erreur = signal('')
 
   ngAfterViewInit() {
+    // Sur un telephone, la vue « semaine » est illisible et la barre
+    // d'outils deborde : on n'y propose que le mois et le jour.
+    const petitEcran = window.matchMedia('(max-width: 575px)').matches
+
     this.calendrier = new Calendar(this.conteneur().nativeElement, {
       plugins: [dayGridPlugin, timeGridPlugin],
       initialView: 'dayGridMonth',
       locale: frLocale,
       height: 'auto',
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay',
-      },
+      headerToolbar: petitEcran
+        ? { left: 'prev,next', center: 'title', right: 'dayGridMonth,timeGridDay' }
+        : { left: 'prev,next today', center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay' },
       events: [],
       eventClick: (info) => {
         const debut = info.event.start?.toLocaleString('fr-FR') ?? ''

@@ -44,3 +44,56 @@ body {
   text-align: center;
   padding: 2rem 1rem;
 }
+
+/* ------------------------------------------------------------ téléphones
+
+   L'application doit rester utilisable sur un écran de smartphone : la
+   majorité des membres du club s'y connectent depuis leur téléphone. Ces
+   règles évitent les débordements horizontaux et resserrent les marges.
+*/
+
+img,
+table {
+  max-width: 100%;
+}
+
+/* le calendrier doit pouvoir replier sa barre d'outils */
+.fc .fc-toolbar {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (max-width: 575.98px) {
+  .container {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+
+  .page-titre {
+    font-size: 1.35rem;
+  }
+
+  .carte {
+    padding: 1rem;
+  }
+
+  /* les boutons d'action passent en pleine largeur plutôt que de déborder */
+  .actions .btn,
+  .entete-page .btn {
+    flex: 1 1 auto;
+  }
+
+  .fc .fc-toolbar-title {
+    font-size: 1.1rem;
+  }
+
+  .fc .fc-button {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.82rem;
+  }
+
+  .fc .fc-daygrid-day-number,
+  .fc .fc-col-header-cell-cushion {
+    font-size: 0.78rem;
+  }
+}

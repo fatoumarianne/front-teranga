@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core'
+import { Component, inject, signal } from '@angular/core'
 import { RouterLink, RouterLinkActive } from '@angular/router'
 
 import { AuthService } from '../../core/services/auth.service'
@@ -17,6 +17,24 @@ export class BarreNavigationComponent {
 
   /** compteur alimente par le service, affiche dans la pastille */
   nonLues = this.notificationService.nonLues
+
+  /**
+   * Ouverture du menu sur petit ecran.
+   *
+   * Bootstrap gere normalement ce repliage avec son propre JavaScript, que
+   * l'application ne charge pas : on le pilote donc avec un signal, ce qui
+   * evite une dependance supplementaire et permet de refermer le menu des
+   * qu'un lien est choisi.
+   */
+  menuOuvert = signal(false)
+
+  basculerMenu() {
+    this.menuOuvert.update(ouvert => !ouvert)
+  }
+
+  fermerMenu() {
+    this.menuOuvert.set(false)
+  }
 
   constructor() {
     if (this.auth.estConnecte()) {
