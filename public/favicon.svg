@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Icone de l'onglet. Reprend le logo en le simplifiant : a seize pixels,
+  les coutures du ballon se brouillent, on ne garde donc que l'ecusson,
+  l'etoile et le ballon pleins.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 72" width="64" height="72">
+  <path d="M32 2 L60 10 V38 C60 54.5 46.5 66.5 32 70.5 C17.5 66.5 4 54.5 4 38 V10 Z"
+        fill="#143f69" stroke="#f2a93b" stroke-width="4" stroke-linejoin="round"/>
+  <polygon fill="#f2a93b"
+           points="32,10 34.46,17.58 42.42,17.58 35.98,22.26 38.44,29.84 32,25.16
+                   25.56,29.84 28.02,22.26 21.58,17.58 29.54,17.58"/>
+  <circle cx="32" cy="46" r="12" fill="#ffffff"/>
+  <path d="M32 34 V58" fill="none" stroke="#143f69" stroke-width="2.4"/>
+  <path d="M20 46 H44" fill="none" stroke="#143f69" stroke-width="2.4"/>
+</svg>

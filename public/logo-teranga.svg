@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Logo du Club Sportif Teranga.
+
+  Un ecusson, forme classique des clubs sportifs, portant l'etoile a cinq
+  branches du drapeau senegalais et un ballon. Dessine en SVG pour rester
+  net a toutes les tailles, du favicon de 16 pixels a une affiche.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 72" width="64" height="72"
+     role="img" aria-label="Club Sportif Teranga">
+
+  <defs>
+    <linearGradient id="ecu" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#235682"/>
+      <stop offset="1" stop-color="#0e2b49"/>
+    </linearGradient>
+  </defs>
+
+  <!-- l'ecusson -->
+  <path d="M32 2 L60 10 V38 C60 54.5 46.5 66.5 32 70.5 C17.5 66.5 4 54.5 4 38 V10 Z"
+        fill="url(#ecu)" stroke="#f2a93b" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- l'etoile du drapeau senegalais -->
+  <polygon fill="#f2a93b"
+           points="32,11 34.02,17.22 40.56,17.22 35.27,21.06 37.29,27.28 32,23.44
+                   26.71,27.28 28.73,21.06 23.44,17.22 29.98,17.22"/>
+
+  <!-- le ballon -->
+  <circle cx="32" cy="44" r="11.5" fill="#ffffff"/>
+  <g fill="none" stroke="#0e2b49" stroke-width="1.7" stroke-linecap="round">
+    <path d="M20.5 44 H43.5"/>
+    <path d="M32 32.5 V55.5"/>
+    <path d="M24.6 35.7 Q31 44 24.6 52.3"/>
+    <path d="M39.4 35.7 Q33 44 39.4 52.3"/>
+  </g>
+</svg>

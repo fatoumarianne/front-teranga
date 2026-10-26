@@ -8,11 +8,216 @@ main {
   flex: 1;
 }
 
+/* ==========================================================================
+   Pied de page
+
+   Bleu profond, comme la barre de navigation : les deux encadrent la page
+   et referment la composition. Les titres de colonne sont souligne d'un
+   court trait or, repris du titre des pages.
+   ========================================================================== */
+
 .pied {
-  background-color: #eef2f7;
-  border-top: 1px solid #e3e8ef;
-  color: var(--teranga-gris);
-  font-size: 0.85rem;
-  padding: 1rem 0;
+  background: linear-gradient(180deg, #123a5e 0%, #0b2440 100%);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.92rem;
+  padding: 3rem 0 1.5rem;
+  margin-top: 3rem;
+}
+
+/* ------------------------------------------------------- colonne du club */
+
+.pied-marque {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.pied-marque span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.pied-marque strong {
+  color: #fff;
+  font-family: var(--teranga-titres);
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+
+.pied-marque small {
+  color: var(--teranga-or);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+}
+
+.pied-presentation {
+  line-height: 1.65;
+  max-width: 24rem;
+  margin-bottom: 1.25rem;
+}
+
+.reseaux {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.reseau {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.reseau:hover {
+  background-color: var(--teranga-or);
+  color: #43290a;
+}
+
+/* ------------------------------------------------- titres des colonnes */
+
+.pied-titre {
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.55rem;
+  position: relative;
+}
+
+.pied-titre::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.2rem;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--teranga-or);
+}
+
+/* --------------------------------------------------------- listes */
+
+.pied-liens,
+.pied-contact,
+.pied-horaires {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pied-liens li {
+  margin-bottom: 0.6rem;
+}
+
+.pied-liens a,
+.pied-contact a {
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.pied-liens a:hover,
+.pied-contact a:hover {
+  color: var(--teranga-or);
+}
+
+.pied-contact li {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  margin-bottom: 0.85rem;
+  line-height: 1.55;
+}
+
+.pied-contact svg {
+  flex: none;
+  margin-top: 0.15rem;
+  color: var(--teranga-or);
+}
+
+.pied-itineraire {
+  display: inline-block;
+  margin-top: 0.3rem;
+  color: var(--teranga-or);
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none;
+}
+
+.pied-itineraire:hover {
+  color: #fff;
+}
+
+.pied-horaires li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pied-horaires li:last-child {
+  border-bottom: none;
+}
+
+.pied-horaires strong {
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------- moyens de paiement */
+
+.etiquettes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.etiquette-paiement {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 6px;
+  padding: 0.22rem 0.65rem;
+  font-size: 0.82rem;
+}
+
+/* ------------------------------------------------------------ bas de page */
+
+.pied-bas {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   text-align: center;
+  font-size: 0.85rem;
+}
+
+.pied-bas p {
+  margin-bottom: 0.3rem;
+}
+
+.pied-bas .mention {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
+@media (max-width: 767.98px) {
+  .pied {
+    padding-top: 2.25rem;
+  }
+
+  .pied-colonnes > [class^='col'] + [class^='col'] {
+    margin-top: 0.5rem;
+  }
 }

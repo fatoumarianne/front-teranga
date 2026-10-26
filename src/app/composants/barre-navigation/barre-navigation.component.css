@@ -1,47 +1,208 @@
+/* ==========================================================================
+   Barre de navigation
+
+   Fond bleu profond, lien courant marque par une pastille or. La barre
+   reste collee en haut de l'ecran au defilement : sur un calendrier ou une
+   longue liste de reservations, les onglets restent a portee.
+   ========================================================================== */
+
 .barre {
-  background-color: var(--teranga-bleu);
-  padding-top: 0.6rem;
-  padding-bottom: 0.6rem;
+  background: linear-gradient(180deg, #16436d 0%, #0e2b49 100%);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  box-shadow: 0 2px 12px rgba(14, 43, 73, 0.18);
+  position: sticky;
+  top: 0;
+  z-index: 1030;
 }
 
+/* ------------------------------------------------------------- la marque */
+
 .marque {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.logo {
+  display: block;
+  flex: none;
+}
+
+.marque-texte {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.marque-nom {
   color: #fff;
+  font-family: var(--teranga-titres);
   font-weight: 600;
-  letter-spacing: 0.2px;
+  font-size: 1.02rem;
+  letter-spacing: 0.01em;
+}
+
+.marque-lieu {
+  color: var(--teranga-or);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------- liens */
+
+.liens {
+  gap: 0.15rem;
+  align-items: center;
 }
 
 .nav-link {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.94rem;
+  font-weight: 500;
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus {
   color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* la page ouverte : pastille or pleine */
 .nav-link.actif {
-  color: #fff;
+  background-color: var(--teranga-or);
+  color: #43290a;
   font-weight: 600;
-  border-bottom: 2px solid #fff;
 }
 
-.identite {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
+.nav-item-cta .btn-or {
+  margin-left: 0.5rem;
+  padding: 0.42rem 1rem;
+  font-size: 0.92rem;
 }
 
-/* le nom de l'utilisateur est un lien vers son profil */
-.identite:hover,
-.identite:focus,
-.identite.actif {
-  color: #fff;
-  text-decoration: underline;
+/* ------------------------------------------------------ espace personnel */
+
+.espace-perso {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-left: auto;
+}
+
+.cloche {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  padding: 0.35rem;
+  border-radius: 8px;
+}
+
+.cloche:hover,
+.cloche.actif {
+  color: var(--teranga-or);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* le mot « Notifications » n'apparait que dans le menu deroulant du mobile */
+.libelle-cloche {
+  display: none;
 }
 
 .pastille {
-  font-size: 0.65rem;
   position: absolute;
-  top: 2px;
-  right: -2px;
+  top: -1px;
+  right: -3px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background-color: var(--teranga-rouge);
+  color: #fff;
+  font-size: 0.66rem;
+  font-weight: 700;
+  line-height: 17px;
+  text-align: center;
+}
+
+/* la pastille ronde aux initiales, puis le nom et le role */
+.identite {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  padding: 0.2rem 0.3rem;
+  border-radius: 10px;
+}
+
+.identite:hover,
+.identite.actif {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.jeton {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--teranga-or);
+  color: #43290a;
+  font-family: var(--teranga-titres);
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.identite-texte {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.identite-nom {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.identite-role {
+  color: var(--teranga-or);
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.btn-deconnexion {
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #fff;
+  font-size: 0.86rem;
+  padding: 0.38rem 0.95rem;
+  white-space: nowrap;
+}
+
+.btn-deconnexion:hover,
+.btn-deconnexion:focus {
+  background-color: #fff;
+  border-color: #fff;
+  color: var(--teranga-bleu);
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgba(242, 169, 59, 0.4);
 }
 
 /* ---------------------------------------------------------- petit ecran */
@@ -63,24 +224,59 @@
 
   .navbar-nav {
     width: 100%;
+    gap: 0;
   }
 
   .navbar-nav .nav-item {
     border-top: 1px solid rgba(255, 255, 255, 0.12);
   }
 
-  .navbar-nav .nav-link,
-  .identite {
-    padding: 0.6rem 0.25rem;
+  .nav-link {
+    border-radius: 6px;
+    padding: 0.6rem 0.75rem;
   }
 
-  .navbar-nav .btn {
-    width: 100%;
-    margin: 0.6rem 0 0.25rem;
+  .nav-item-cta {
+    border-top: none !important;
+  }
+
+  .nav-item-cta .btn-or {
+    display: block;
+    margin: 0.75rem 0 0.25rem;
+    text-align: center;
+  }
+
+  /* l'espace personnel passe en colonne sous les liens */
+  .espace-perso {
+    display: block;
+    margin-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 0.5rem;
+  }
+
+  .cloche {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .libelle-cloche {
+    display: inline;
+    margin-left: 0.6rem;
+    font-size: 0.94rem;
+    font-weight: 500;
   }
 
   .pastille {
     position: static;
-    margin-left: 0.4rem;
+    margin-left: 0.55rem;
+  }
+
+  .identite {
+    padding: 0.6rem 0.75rem;
+    margin-top: 0.25rem;
+  }
+
+  .btn-deconnexion {
+    width: 100%;
+    margin: 0.75rem 0 0.25rem;
   }
 }

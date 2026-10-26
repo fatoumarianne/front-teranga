@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core'
+import { Component, computed, inject, signal } from '@angular/core'
 import { RouterLink, RouterLinkActive } from '@angular/router'
 
 import { AuthService } from '../../core/services/auth.service'
@@ -17,6 +17,26 @@ export class BarreNavigationComponent {
 
   /** compteur alimente par le service, affiche dans la pastille */
   nonLues = this.notificationService.nonLues
+
+  /**
+   * Initiales de l'utilisateur, affichees dans la pastille ronde.
+   *
+   * Calculees a partir du nom complet : premiere lettre des deux premiers
+   * mots. Un « computed » recalcule la valeur automatiquement lorsque
+   * l'utilisateur change, par exemple apres une modification du profil.
+   */
+  initiales = computed(() => {
+    const nom = this.auth.utilisateur()?.nom_complet ?? ''
+    return nom
+      .split(' ')
+      .filter(mot => mot.length > 0)
+      .slice(0, 2)
+      .map(mot => mot[0].toUpperCase())
+      .join('')
+  })
+
+  /** Libelle du role, affiche sous le nom. */
+  role = computed(() => (this.auth.estAdministrateur() ? 'Administrateur' : 'Membre'))
 
   /**
    * Ouverture du menu sur petit ecran.

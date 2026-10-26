@@ -1,7 +1,13 @@
 <nav class="navbar navbar-expand-lg barre">
   <div class="container">
+
+    <!-- ------------------------------------------------------- la marque -->
     <a class="navbar-brand marque" routerLink="/" (click)="fermerMenu()">
-      Club Sportif Teranga
+      <img src="logo-teranga.svg" alt="" width="38" height="43" class="logo">
+      <span class="marque-texte">
+        <span class="marque-nom">Club Sportif Teranga</span>
+        <span class="marque-lieu">Keur Massar</span>
+      </span>
     </a>
 
     <button class="navbar-toggler" type="button" aria-controls="menu"
@@ -12,7 +18,7 @@
 
     <div class="navbar-collapse" id="menu" [class.ouvert]="menuOuvert()">
       @if (auth.estConnecte()) {
-        <ul class="navbar-nav me-auto">
+        <ul class="navbar-nav me-auto liens">
           <li class="nav-item">
             <a class="nav-link" routerLink="/" routerLinkActive="actif"
                [routerLinkActiveOptions]="{ exact: true }" (click)="fermerMenu()">
@@ -22,11 +28,6 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/disponibilites" routerLinkActive="actif" (click)="fermerMenu()">
               Disponibilités
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/contact" routerLinkActive="actif" (click)="fermerMenu()">
-              Contact
             </a>
           </li>
 
@@ -65,32 +66,44 @@
               </a>
             </li>
           }
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contact" routerLinkActive="actif" (click)="fermerMenu()">
+              Contact
+            </a>
+          </li>
         </ul>
 
-        <ul class="navbar-nav align-items-lg-center">
-          <li class="nav-item">
-            <a class="nav-link position-relative" routerLink="/notifications"
-               routerLinkActive="actif" (click)="fermerMenu()">
-              Notifications
-              @if (nonLues() > 0) {
-                <span class="badge rounded-pill bg-danger pastille">{{ nonLues() }}</span>
-              }
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link identite" routerLink="/profil" routerLinkActive="actif"
-               title="Mon profil" (click)="fermerMenu()">
-              {{ auth.utilisateur()?.nom_complet }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <button class="btn btn-sm btn-outline-light" (click)="fermerMenu(); deconnexion()">
-              Déconnexion
-            </button>
-          </li>
-        </ul>
+        <!-- ------------------------------------------- l'espace personnel -->
+        <div class="espace-perso">
+          <a class="cloche" routerLink="/notifications" routerLinkActive="actif"
+             title="Mes notifications" (click)="fermerMenu()">
+            <svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true">
+              <path d="M18 16v-5a6 6 0 1 0-12 0v5l-1.5 2.5h15L18 16z"
+                    fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              <path d="M10 19.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.7"/>
+            </svg>
+            <span class="libelle-cloche">Notifications</span>
+            @if (nonLues() > 0) {
+              <span class="pastille">{{ nonLues() }}</span>
+            }
+          </a>
+
+          <a class="identite" routerLink="/profil" routerLinkActive="actif"
+             title="Mon profil" (click)="fermerMenu()">
+            <span class="jeton">{{ initiales() }}</span>
+            <span class="identite-texte">
+              <span class="identite-nom">{{ auth.utilisateur()?.nom_complet }}</span>
+              <span class="identite-role">{{ role() }}</span>
+            </span>
+          </a>
+
+          <button class="btn btn-deconnexion" (click)="fermerMenu(); deconnexion()">
+            Déconnexion
+          </button>
+        </div>
       } @else {
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto liens">
           <li class="nav-item">
             <a class="nav-link" routerLink="/" routerLinkActive="actif"
                [routerLinkActiveOptions]="{ exact: true }" (click)="fermerMenu()">Accueil</a>
@@ -101,8 +114,8 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/connexion" routerLinkActive="actif" (click)="fermerMenu()">Connexion</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/inscription" routerLinkActive="actif" (click)="fermerMenu()">Inscription</a>
+          <li class="nav-item nav-item-cta">
+            <a class="btn btn-or" routerLink="/inscription" (click)="fermerMenu()">Créer un compte</a>
           </li>
         </ul>
       }

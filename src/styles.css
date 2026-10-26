@@ -1,34 +1,150 @@
-/* Styles globaux de l'application — Club Sportif Teranga */
+/* ===========================================================================
+   Styles globaux — Club Sportif Teranga
+
+   Identite visuelle : le bleu profond de l'ecusson du club, rehausse de l'or
+   de l'etoile du drapeau senegalais. Le bleu porte la structure (barre de
+   navigation, titres, pied de page), l'or ne sert qu'aux points d'appel :
+   bouton principal, chiffres, soulignement des titres. Un accent employe
+   avec parcimonie reste un accent.
+   ======================================================================== */
 
 :root {
-  --teranga-bleu: #1f4e79;
+  /* bleus — couleur de structure */
+  --teranga-bleu: #16436d;
+  --teranga-bleu-fonce: #0e2b49;
   --teranga-bleu-clair: #4472c4;
+
+  /* or — couleur d'accent */
+  --teranga-or: #f2a93b;
+  --teranga-or-fonce: #c9821f;
+  --teranga-or-pale: #fdf3e2;
+
+  /* couleurs de statut */
   --teranga-vert: #198754;
   --teranga-orange: #ffc107;
   --teranga-rouge: #dc3545;
   --teranga-gris: #6c757d;
+
+  /* surfaces */
+  --teranga-fond: #f5f7fa;
+  --teranga-bordure: #e3e8ef;
+
+  --teranga-titres: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+  --teranga-texte: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 body {
-  background-color: #f6f8fb;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--teranga-fond);
+  font-family: var(--teranga-texte);
+  color: #22303f;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--teranga-titres);
+  letter-spacing: -0.01em;
+}
+
+/* ------------------------------------------------------- titres de page */
+
+/*
+ * Chaque page porte son titre, souligne d'un court trait or. Le trait est
+ * dessine en pseudo-element : il n'ajoute aucune balise au gabarit.
+ */
 .page-titre {
   color: var(--teranga-bleu);
-  font-weight: 600;
-  margin-bottom: 1.25rem;
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.6rem;
+  position: relative;
 }
+
+.page-titre::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3rem;
+  height: 3px;
+  border-radius: 3px;
+  background-color: var(--teranga-or);
+}
+
+/* l'en-tete de page, lorsqu'un bouton accompagne le titre */
+.entete-page .page-titre {
+  margin-bottom: 1rem;
+}
+
+/* ------------------------------------------------------------- surfaces */
 
 .carte {
   background: #fff;
-  border: 1px solid #e3e8ef;
-  border-radius: 10px;
-  padding: 1.25rem;
-  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+  border: 1px solid var(--teranga-bordure);
+  border-radius: 12px;
+  padding: 1.35rem;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
 }
 
-/* pastilles de statut, reprises des couleurs du calendrier */
+/* ------------------------------------------------------------- boutons */
+
+.btn {
+  font-family: var(--teranga-titres);
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.btn-primary {
+  background-color: var(--teranga-bleu);
+  border-color: var(--teranga-bleu);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--teranga-bleu-fonce);
+  border-color: var(--teranga-bleu-fonce);
+}
+
+.btn-outline-primary {
+  color: var(--teranga-bleu);
+  border-color: var(--teranga-bleu);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--teranga-bleu);
+  border-color: var(--teranga-bleu);
+  color: #fff;
+}
+
+/* bouton d'accent : un seul par ecran, sur l'action principale */
+.btn-or {
+  background-color: var(--teranga-or);
+  border: 1px solid var(--teranga-or);
+  color: #4a2f00;
+}
+
+.btn-or:hover,
+.btn-or:focus {
+  background-color: var(--teranga-or-fonce);
+  border-color: var(--teranga-or-fonce);
+  color: #fff;
+}
+
+/* --------------------------------------------------------- formulaires */
+
+.form-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #35495e;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--teranga-bleu-clair);
+  box-shadow: 0 0 0 3px rgba(68, 114, 196, 0.18);
+}
+
+/* --------------------------------------------- pastilles et messages */
+
 .badge-en_attente { background-color: var(--teranga-orange); color: #4a3700; }
 .badge-validee    { background-color: var(--teranga-vert); color: #fff; }
 .badge-refusee    { background-color: var(--teranga-rouge); color: #fff; }
@@ -43,6 +159,21 @@ body {
   color: var(--teranga-gris);
   text-align: center;
   padding: 2rem 1rem;
+}
+
+/* -------------------------------------------------------------- tables */
+
+.table > thead {
+  background-color: #eef2f7;
+}
+
+.table > thead th {
+  font-family: var(--teranga-titres);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #35495e;
 }
 
 /* ------------------------------------------------------------ téléphones
