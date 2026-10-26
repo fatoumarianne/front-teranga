@@ -17,8 +17,8 @@
   align-items: center;
   gap: 2rem;
   background-image:
-    linear-gradient(115deg, rgba(14, 43, 73, 0.94) 0%, rgba(14, 43, 73, 0.55) 55%, rgba(14, 43, 73, 0.3) 100%),
-    url('/images/motif-terrain.svg'),
+    linear-gradient(112deg, rgba(10, 36, 64, 0.95) 0%, rgba(12, 40, 70, 0.82) 48%, rgba(16, 52, 88, 0.68) 100%),
+    url('/images/banniere-club.webp'),
     linear-gradient(135deg, #16436d 0%, #2f6ba6 60%, #3f7fc0 100%);
   background-size: cover, cover, cover;
   background-position: center;
@@ -273,7 +273,7 @@
 
 .vignette img {
   width: 100%;
-  aspect-ratio: 8 / 5;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
   background-color: #eef2f7;
