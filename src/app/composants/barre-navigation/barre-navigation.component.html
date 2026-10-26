@@ -24,6 +24,11 @@
               Disponibilités
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contact" routerLinkActive="actif" (click)="fermerMenu()">
+              Contact
+            </a>
+          </li>
 
           @if (auth.estMembre()) {
             <li class="nav-item">
@@ -89,6 +94,9 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/" routerLinkActive="actif"
                [routerLinkActiveOptions]="{ exact: true }" (click)="fermerMenu()">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contact" routerLinkActive="actif" (click)="fermerMenu()">Contact</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/connexion" routerLinkActive="actif" (click)="fermerMenu()">Connexion</a>

@@ -1,0 +1,76 @@
+<h1 class="page-titre">Nous contacter</h1>
+<p class="intro">
+  Le Club Sportif Teranga vous accueille à Keur Massar. Pour une question
+  sur les adhésions, les créneaux ou une réservation, écrivez-nous,
+  appelez-nous, ou passez directement au secrétariat.
+</p>
+
+<div class="row g-4">
+
+  <!-- ------------------------------------------------- les coordonnées -->
+  <div class="col-lg-5">
+    <div class="carte">
+      <h2 class="bloc-titre">Coordonnées</h2>
+
+      <dl class="coordonnees">
+        <dt>Adresse</dt>
+        <dd>
+          {{ club.adresse }}<br>
+          {{ club.ville }}
+          <a class="lien-carte" [href]="lienCarte" target="_blank" rel="noopener">
+            Ouvrir l'itinéraire →
+          </a>
+        </dd>
+
+        <dt>Téléphone</dt>
+        <dd>
+          <a [href]="lienTelephone">{{ club.telephone }}</a><br>
+          <span class="secondaire">{{ club.telephone2 }} (secrétariat)</span>
+        </dd>
+
+        <dt>Adresse e-mail</dt>
+        <dd><a [href]="'mailto:' + club.email">{{ club.email }}</a></dd>
+      </dl>
+    </div>
+
+    <div class="carte mt-4">
+      <h2 class="bloc-titre">Horaires d'ouverture</h2>
+      <table class="horaires">
+        <tbody>
+          @for (h of horaires; track h.jours) {
+            <tr>
+              <th>{{ h.jours }}</th>
+              <td>{{ h.heures }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+      <p class="note">
+        Les réservations se font en ligne à toute heure. Les créneaux
+        réservables suivent les horaires ci-dessus.
+      </p>
+    </div>
+  </div>
+
+  <!-- ------------------------------------------------------- la carte -->
+  <div class="col-lg-7">
+    <div class="carte p-0 bloc-carte">
+      <iframe [src]="carteIntegree" title="Localisation du Club Sportif Teranga"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="carte mt-4">
+      <h2 class="bloc-titre">Comment venir</h2>
+      <p>
+        Le club se situe à Keur Massar, accessible depuis la route
+        nationale. Un parking est disponible devant l'entrée principale.
+        Les cars rapides et les taxis desservent le quartier toute la
+        journée.
+      </p>
+      <a class="btn btn-primary" [href]="lienCarte" target="_blank" rel="noopener">
+        Voir sur la carte
+      </a>
+    </div>
+  </div>
+
+</div>

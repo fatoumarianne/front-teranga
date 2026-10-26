@@ -1,0 +1,118 @@
+:host {
+  display: block;
+}
+
+.intro {
+  color: var(--teranga-gris);
+  max-width: 48rem;
+  margin-bottom: 1.75rem;
+}
+
+.bloc-titre {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--teranga-bleu);
+  margin-bottom: 1.1rem;
+}
+
+/* ------------------------------------------------------- coordonnées */
+
+.coordonnees {
+  margin-bottom: 0;
+}
+
+.coordonnees dt {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--teranga-gris);
+  font-weight: 600;
+  margin-top: 1.1rem;
+}
+
+.coordonnees dt:first-child {
+  margin-top: 0;
+}
+
+.coordonnees dd {
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.coordonnees a {
+  color: var(--teranga-bleu-clair);
+  text-decoration: none;
+}
+
+.coordonnees a:hover {
+  text-decoration: underline;
+}
+
+.lien-carte {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.secondaire {
+  color: var(--teranga-gris);
+  font-size: 0.9rem;
+}
+
+/* ---------------------------------------------------------- horaires */
+
+.horaires {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.horaires th {
+  font-weight: 500;
+  color: #35495e;
+  padding: 0.35rem 0;
+  text-align: left;
+}
+
+.horaires td {
+  padding: 0.35rem 0;
+  text-align: right;
+  font-weight: 600;
+  color: var(--teranga-bleu);
+  white-space: nowrap;
+}
+
+.horaires tr + tr th,
+.horaires tr + tr td {
+  border-top: 1px solid #eef2f7;
+}
+
+.note {
+  font-size: 0.85rem;
+  color: var(--teranga-gris);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------- carte */
+
+.bloc-carte {
+  overflow: hidden;
+}
+
+.bloc-carte iframe {
+  display: block;
+  width: 100%;
+  height: 380px;
+  border: 0;
+}
+
+.btn-primary {
+  background-color: var(--teranga-bleu);
+  border-color: var(--teranga-bleu);
+}
+
+@media (max-width: 575.98px) {
+  .bloc-carte iframe {
+    height: 260px;
+  }
+}
