@@ -4,6 +4,7 @@ import { dateSeule } from '../../../core/dates'
 import { messageErreur, valeur } from '../../../core/formulaire'
 import { Utilisateur } from '../../../core/modeles'
 import { MembreService } from '../../../core/services/membre.service'
+import { IconeComponent } from '../../../composants/icone/icone.component'
 
 /**
  * Gestion des comptes.
@@ -13,6 +14,7 @@ import { MembreService } from '../../../core/services/membre.service'
  */
 @Component({
   selector: 'app-membres',
+  imports: [IconeComponent],
   templateUrl: './membres.component.html',
   styleUrl: './membres.component.css',
 })

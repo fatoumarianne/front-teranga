@@ -4,6 +4,7 @@ import { creneau, dateHeure, libelleStatut } from '../../../core/dates'
 import { messageErreur, valeur } from '../../../core/formulaire'
 import { Reservation, StatutReservation } from '../../../core/modeles'
 import { ReservationService } from '../../../core/services/reservation.service'
+import { IconeComponent } from '../../../composants/icone/icone.component'
 
 /**
  * Traitement des demandes de reservation par l'administrateur.
@@ -13,6 +14,7 @@ import { ReservationService } from '../../../core/services/reservation.service'
  */
 @Component({
   selector: 'app-demandes',
+  imports: [IconeComponent],
   templateUrl: './demandes.component.html',
   styleUrl: './demandes.component.css',
 })

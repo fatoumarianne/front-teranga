@@ -2,6 +2,7 @@ import { Component, input, output } from '@angular/core'
 
 import { creneau, dateHeure, libelleStatut } from '../../core/dates'
 import { Reservation } from '../../core/modeles'
+import { IconeComponent } from '../icone/icone.component'
 
 /**
  * Carte affichant une reservation.
@@ -12,6 +13,7 @@ import { Reservation } from '../../core/modeles'
  */
 @Component({
   selector: 'app-reservation-carte',
+  imports: [IconeComponent],
   templateUrl: './reservation-carte.component.html',
   styleUrl: './reservation-carte.component.css',
 })

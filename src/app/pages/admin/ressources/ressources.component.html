@@ -1,7 +1,7 @@
 <div class="entete-page">
   <h1 class="page-titre mb-0">Salles et équipements</h1>
   <button class="btn btn-primary btn-sm" (click)="ouvrirCreation()">
-    + Ajouter une ressource
+    <app-icone nom="ajouter" class="avec-texte" />Ajouter une ressource
   </button>
 </div>
 
@@ -116,8 +116,12 @@
         @if (r.description) { <p class="desc">{{ r.description }}</p> }
         <p class="detail">Capacité : {{ r.capacite ?? '—' }} personnes</p>
         <div class="actions">
-          <button class="btn btn-sm btn-outline-primary" (click)="ouvrirModification(r)">Modifier</button>
-          <button class="btn btn-sm btn-outline-danger" (click)="supprimer(r)">Supprimer</button>
+          <button class="btn btn-sm btn-outline-primary" (click)="ouvrirModification(r)" title="Modifier">
+            <app-icone nom="modifier" class="avec-texte" />Modifier
+          </button>
+          <button class="btn btn-sm btn-outline-danger" (click)="supprimer(r)" title="Supprimer">
+            <app-icone nom="supprimer" class="avec-texte" />Supprimer
+          </button>
         </div>
       </div>
     } @empty {
@@ -139,8 +143,12 @@
         @if (r.description) { <p class="desc">{{ r.description }}</p> }
         <p class="detail">Quantité : {{ r.quantite ?? '—' }} · État : {{ r.etat ?? '—' }}</p>
         <div class="actions">
-          <button class="btn btn-sm btn-outline-primary" (click)="ouvrirModification(r)">Modifier</button>
-          <button class="btn btn-sm btn-outline-danger" (click)="supprimer(r)">Supprimer</button>
+          <button class="btn btn-sm btn-outline-primary" (click)="ouvrirModification(r)" title="Modifier">
+            <app-icone nom="modifier" class="avec-texte" />Modifier
+          </button>
+          <button class="btn btn-sm btn-outline-danger" (click)="supprimer(r)" title="Supprimer">
+            <app-icone nom="supprimer" class="avec-texte" />Supprimer
+          </button>
         </div>
       </div>
     } @empty {

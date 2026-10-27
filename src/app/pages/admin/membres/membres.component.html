@@ -60,7 +60,11 @@
                       [class.btn-outline-danger]="m.statut === 'actif'"
                       [class.btn-outline-success]="m.statut !== 'actif'"
                       (click)="basculerStatut(m)">
-                @if (m.statut === 'actif') { Désactiver } @else { Activer }
+                @if (m.statut === 'actif') {
+                  <app-icone nom="desactiver" class="avec-texte" />Désactiver
+                } @else {
+                  <app-icone nom="activer" class="avec-texte" />Activer
+                }
               </button>
             </td>
           </tr>

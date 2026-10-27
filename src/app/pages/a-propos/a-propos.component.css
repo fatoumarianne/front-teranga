@@ -1,0 +1,273 @@
+:host {
+  display: block;
+}
+
+/* ---------------------------------------------------------- en-tête */
+
+/*
+ * Meme traitement que la banniere de l'accueil : la photographie du club
+ * sous un voile bleu, pour que le texte reste lisible quelle que soit la
+ * zone de l'image qui se trouve derriere.
+ */
+.entete {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  background-image:
+    linear-gradient(112deg, rgba(10, 36, 64, 0.95) 0%, rgba(12, 40, 70, 0.84) 55%, rgba(16, 52, 88, 0.7) 100%),
+    url('/images/banniere-club.webp'),
+    linear-gradient(135deg, #16436d 0%, #2f6ba6 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  margin-bottom: 2.75rem;
+}
+
+.entete-texte {
+  flex: 1 1 380px;
+}
+
+.surtitre {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--teranga-or);
+  margin-bottom: 0.7rem;
+}
+
+.entete h1 {
+  font-size: clamp(1.7rem, 3.6vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 0.9rem;
+}
+
+.accroche {
+  font-size: 1.02rem;
+  line-height: 1.6;
+  opacity: 0.92;
+  margin-bottom: 0;
+  max-width: 34rem;
+}
+
+.entete-chiffres {
+  display: flex;
+  flex: 0 1 260px;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.chiffre {
+  flex: 1 1 110px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  padding: 1rem 0.75rem;
+  text-align: center;
+}
+
+.chiffre .valeur {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--teranga-or);
+}
+
+.chiffre .libelle {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.85;
+  margin-top: 0.25rem;
+}
+
+/* ------------------------------------------------------------- blocs */
+
+.bloc {
+  margin-bottom: 2.75rem;
+}
+
+.bloc-titre {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--teranga-bleu);
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.55rem;
+  position: relative;
+}
+
+.bloc-titre::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.8rem;
+  height: 3px;
+  border-radius: 3px;
+  background-color: var(--teranga-or);
+}
+
+.bloc p {
+  color: #35495e;
+  line-height: 1.7;
+}
+
+.bloc-intro {
+  color: var(--teranga-gris);
+  max-width: 48rem;
+  margin-bottom: 1.4rem;
+}
+
+/* ------------------------------------------------------- encadré club */
+
+.encadre {
+  height: 100%;
+}
+
+.encadre h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--teranga-bleu);
+  margin-bottom: 1rem;
+}
+
+.encadre dl {
+  margin-bottom: 1.25rem;
+}
+
+.encadre dt {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--teranga-gris);
+  font-weight: 600;
+  margin-top: 0.9rem;
+}
+
+.encadre dt:first-child {
+  margin-top: 0;
+}
+
+.encadre dd {
+  margin-left: 0;
+  margin-bottom: 0;
+  line-height: 1.55;
+  color: #35495e;
+}
+
+/* ---------------------------------------------------------- valeurs */
+
+.valeur {
+  height: 100%;
+}
+
+.valeur h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--teranga-bleu);
+  margin-bottom: 0.5rem;
+}
+
+.valeur p {
+  font-size: 0.93rem;
+  color: var(--teranga-gris);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* ----------------------------------------------------------- apports */
+
+.apport {
+  height: 100%;
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.apport .numero {
+  flex: none;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  background-color: var(--teranga-or);
+  color: #43290a;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apport h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--teranga-bleu);
+  margin-bottom: 0.35rem;
+}
+
+.apport p {
+  font-size: 0.92rem;
+  color: var(--teranga-gris);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------- appel */
+
+.appel {
+  background: linear-gradient(135deg, #16436d 0%, #0e2b49 100%);
+  border-radius: 20px;
+  padding: 2.75rem 2rem;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.appel h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.appel p {
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 1.5rem;
+  max-width: 34rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.appel-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-contour {
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+.btn-contour:hover {
+  color: var(--teranga-bleu);
+  background-color: #fff;
+  border-color: #fff;
+}
+
+@media (max-width: 575.98px) {
+  .entete {
+    padding: 2.25rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .appel {
+    padding: 2rem 1.25rem;
+  }
+}

@@ -1,0 +1,117 @@
+<!-- --------------------------------------------------------- en-tête -->
+<section class="entete">
+  <div class="entete-texte">
+    <p class="surtitre">Keur Massar · Depuis 2023</p>
+    <h1>Un club de quartier, ouvert à tous</h1>
+    <p class="accroche">
+      Le Club Sportif Teranga réunit les habitants de Keur Massar autour du
+      basket, du futsal, du tennis et de la musculation. Ses salles et son
+      matériel appartiennent à ses membres.
+    </p>
+  </div>
+
+  <div class="entete-chiffres">
+    <div class="chiffre">
+      <span class="valeur">{{ nombreSalles() }}</span>
+      <span class="libelle">salles</span>
+    </div>
+    <div class="chiffre">
+      <span class="valeur">{{ nombreEquipements() }}</span>
+      <span class="libelle">équipements</span>
+    </div>
+  </div>
+</section>
+
+<!-- ----------------------------------------------------------- le club -->
+<section class="bloc">
+  <h2 class="bloc-titre">Le club</h2>
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <p>
+        Le Club Sportif Teranga est né de l'initiative d'habitants du
+        quartier qui souhaitaient offrir aux jeunes de l'unité 15 un lieu
+        pour pratiquer, s'entraîner et se retrouver. L'association met à
+        disposition de ses membres des salles et du matériel, encadre les
+        entraînements, et organise des rencontres entre quartiers.
+      </p>
+      <p>
+        Le club fonctionne grâce aux cotisations de ses membres et au travail
+        de son secrétariat, qui gère les adhésions, l'entretien du matériel
+        et l'attribution des créneaux.
+      </p>
+      <p class="mb-0">
+        L'adhésion est ouverte à toute personne du quartier, sans sélection
+        ni niveau requis. Elle se fait auprès du secrétariat, aux horaires
+        d'ouverture.
+      </p>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="carte encadre">
+        <h3>En pratique</h3>
+        <dl>
+          <dt>Adresse</dt>
+          <dd>{{ club.adresse }}<br>{{ club.ville }}</dd>
+          <dt>Téléphone</dt>
+          <dd>{{ club.telephone }}</dd>
+          <dt>Adhésion</dt>
+          <dd>À partir de 5 000 FCFA par mois</dd>
+        </dl>
+        <a class="btn btn-primary" routerLink="/contact">Nous contacter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- -------------------------------------------------------- nos valeurs -->
+<section class="bloc">
+  <h2 class="bloc-titre">Nos valeurs</h2>
+  <div class="row g-3">
+    @for (v of valeurs; track v.titre) {
+      <div class="col-md-4">
+        <div class="carte valeur">
+          <h3>{{ v.titre }}</h3>
+          <p>{{ v.texte }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ------------------------------------------------------ l'application -->
+<section class="bloc">
+  <h2 class="bloc-titre">Pourquoi cette application</h2>
+  <p class="bloc-intro">
+    Les réservations se faisaient autrefois à l'oral ou sur un cahier. Une
+    même salle pouvait être promise deux fois, et personne ne savait
+    vraiment quels créneaux étaient encore libres. Ce site a été conçu pour
+    y mettre fin.
+  </p>
+
+  <div class="row g-3">
+    @for (a of apports; track a.titre; let i = $index) {
+      <div class="col-md-6">
+        <div class="carte apport">
+          <span class="numero">{{ i + 1 }}</span>
+          <div>
+            <h3>{{ a.titre }}</h3>
+            <p>{{ a.texte }}</p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ------------------------------------------------------------- appel -->
+<section class="appel">
+  <h2>Envie de nous rejoindre ?</h2>
+  <p>
+    Créez votre compte pour consulter les créneaux, puis passez au
+    secrétariat pour finaliser votre adhésion.
+  </p>
+  <div class="appel-actions">
+    <a class="btn btn-or btn-lg" routerLink="/inscription">Créer un compte</a>
+    <a class="btn btn-contour btn-lg" routerLink="/contact">Nous trouver</a>
+  </div>
+</section>

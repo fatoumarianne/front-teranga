@@ -59,8 +59,12 @@
           </div>
         } @else {
           <div class="actions">
-            <button class="btn btn-sm btn-success" (click)="valider(r.id)">Valider</button>
-            <button class="btn btn-sm btn-outline-danger" (click)="ouvrirRefus(r.id)">Refuser</button>
+            <button class="btn btn-sm btn-success" (click)="valider(r.id)">
+              <app-icone nom="valider" class="avec-texte" />Valider
+            </button>
+            <button class="btn btn-sm btn-outline-danger" (click)="ouvrirRefus(r.id)">
+              <app-icone nom="refuser" class="avec-texte" />Refuser
+            </button>
           </div>
         }
       }

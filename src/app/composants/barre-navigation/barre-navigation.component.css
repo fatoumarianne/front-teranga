@@ -43,6 +43,7 @@
   font-weight: 600;
   font-size: 1.02rem;
   letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .marque-lieu {
@@ -203,6 +204,79 @@
 
 .navbar-toggler:focus {
   box-shadow: 0 0 0 3px rgba(242, 169, 59, 0.4);
+}
+
+/* ------------------------------------------------- ecrans intermediaires
+
+   Le menu de l'administrateur compte sept liens, contre quatre pour le
+   membre : entre 992 et 1400 pixels, il depasse la largeur du conteneur et
+   provoque une barre de defilement horizontale sur toute la page. On
+   resserre donc progressivement, plutot que de replier le menu en bouton,
+   ce qui obligerait l'administrateur a l'ouvrir a chaque fois.
+*/
+
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  .nav-link {
+    padding: 0.45rem 0.5rem;
+    font-size: 0.88rem;
+  }
+
+  .marque-nom {
+    font-size: 0.95rem;
+  }
+
+  .espace-perso {
+    gap: 0.6rem;
+  }
+
+  .btn-deconnexion {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.82rem;
+  }
+}
+
+/*
+ * En dessous de 1200 pixels, resserrer ne suffit plus : le nom et le role
+ * cedent la place, la pastille aux initiales les remplace. Elle reste un
+ * lien vers le profil, et son infobulle porte toujours le nom.
+ */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .logo {
+    width: 32px;
+    height: 36px;
+  }
+
+  .marque-nom {
+    font-size: 0.88rem;
+  }
+
+  .marque-lieu {
+    display: none;
+  }
+
+  .nav-link {
+    padding: 0.38rem 0.38rem;
+    font-size: 0.83rem;
+  }
+
+  .espace-perso {
+    gap: 0.45rem;
+  }
+
+  .identite-texte {
+    display: none;
+  }
+
+  .jeton {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .btn-deconnexion {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.78rem;
+  }
 }
 
 /* ---------------------------------------------------------- petit ecran */

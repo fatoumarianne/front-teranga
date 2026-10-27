@@ -4,10 +4,12 @@ import { messageErreur, valeur } from '../../../core/formulaire'
 import { illustrationRessource } from '../../../core/illustration'
 import { Ressource, TypeRessource } from '../../../core/modeles'
 import { RessourceService } from '../../../core/services/ressource.service'
+import { IconeComponent } from '../../../composants/icone/icone.component'
 
 /** Gestion des salles et des equipements : creation, modification, suppression. */
 @Component({
   selector: 'app-ressources',
+  imports: [IconeComponent],
   templateUrl: './ressources.component.html',
   styleUrl: './ressources.component.css',
 })
